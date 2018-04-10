@@ -33,9 +33,9 @@
         <PropertyValue name="EnterKeyBehavior">0</PropertyValue>
         <PropertyValue name="ExtractMethod_AllowMovingDeclaration">0</PropertyValue>
         <PropertyValue name="ExtractMethod_DoNotPutOutOrRefOnStruct">1</PropertyValue>
-        <PropertyValue name="Formatting_TriggerOnBlockCompletion">1</PropertyValue>
-        <PropertyValue name="Formatting_TriggerOnPaste">1</PropertyValue>
-        <PropertyValue name="Formatting_TriggerOnStatementCompletion">1</PropertyValue>
+        <PropertyValue name="Formatting_TriggerOnBlockCompletion">0</PropertyValue>
+        <PropertyValue name="Formatting_TriggerOnPaste">0</PropertyValue>
+        <PropertyValue name="Formatting_TriggerOnStatementCompletion">0</PropertyValue>
         <PropertyValue name="HighlightMatchingPortionsOfCompletionListItems">1</PropertyValue>
         <PropertyValue name="Indent_BlockContents">1</PropertyValue>
         <PropertyValue name="Indent_Braces">0</PropertyValue>
@@ -356,10 +356,10 @@
       </ToolsOptionsSubCategory>
       <ToolsOptionsSubCategory name="JavaScript Specific">
         <PropertyValue name="DownloadRemoteReferences">false</PropertyValue>
-        <PropertyValue name="FormatCompletedBlockOnRightCurlyBrace">true</PropertyValue>
-        <PropertyValue name="FormatCompletedLineOnEnter">true</PropertyValue>
-        <PropertyValue name="FormatCompletedStatementOnSemicolon">true</PropertyValue>
-        <PropertyValue name="FormatOnPaste">true</PropertyValue>
+        <PropertyValue name="FormatCompletedBlockOnRightCurlyBrace">false</PropertyValue>
+        <PropertyValue name="FormatCompletedLineOnEnter">false</PropertyValue>
+        <PropertyValue name="FormatCompletedStatementOnSemicolon">false</PropertyValue>
+        <PropertyValue name="FormatOnPaste">false</PropertyValue>
         <PropertyValue name="ImplicitReferencesString">Implicit (Windows)|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\domWindows.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js;Implicit (Windows 8.1)|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\sitetypesWindows.js|$(VSInstallDir)\JavaScript\References\domWindows_8.1.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js;Implicit (Windows Phone 8.1)|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\sitetypesWindows.js|$(VSInstallDir)\JavaScript\References\domWindowsPhone_8.1.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js;Implicit (Web)|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\sitetypesWeb.js|$(VSInstallDir)\JavaScript\References\domWeb.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js|C:\Users\amoerman\AppData\Local\Web Essentials 2015\Modern.Intellisense.js;Dedicated Worker|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\dedicatedworker.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js;Generic|$(VSInstallDir)\JavaScript\References\libhelp.js|$(VSInstallDir)\JavaScript\References\underscorefilter.js|$(VSInstallDir)\JavaScript\References\showPlainComments.js;</PropertyValue>
         <PropertyValue name="InsertSpaceAfterCommaDelimiter">true</PropertyValue>
         <PropertyValue name="InsertSpaceAfterFunctionKeywordForAnonymousFunctions">true</PropertyValue>
@@ -376,11 +376,11 @@
         <PropertyValue name="AddSemicolonForClassTypes">true</PropertyValue>
         <PropertyValue name="AlignParameters">false</PropertyValue>
         <PropertyValue name="AlwaysUseFallbackLocation">false</PropertyValue>
-        <PropertyValue name="AutoFormatOnBraceCompletion">true</PropertyValue>
-        <PropertyValue name="AutoFormatOnClosingBrace">true</PropertyValue>
+        <PropertyValue name="AutoFormatOnBraceCompletion">false</PropertyValue>
+        <PropertyValue name="AutoFormatOnClosingBrace">false</PropertyValue>
         <PropertyValue name="AutoFormatOnPaste">true</PropertyValue>
-        <PropertyValue name="AutoFormatOnPaste2">1</PropertyValue>
-        <PropertyValue name="AutoFormatOnSemicolon">true</PropertyValue>
+        <PropertyValue name="AutoFormatOnPaste2">0</PropertyValue>
+        <PropertyValue name="AutoFormatOnSemicolon">false</PropertyValue>
         <PropertyValue name="AutoIndentOnTab">false</PropertyValue>
         <PropertyValue name="AutoPchCacheQuota">5120</PropertyValue>
         <PropertyValue name="AutoTuneMaximumFindReferencesThreads">true</PropertyValue>

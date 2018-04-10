@@ -132,7 +132,15 @@ const FinishDate = (props: { build: IDetailedBuild }) => {
 
 const TimeRemaining = (props: { build: IDetailedBuild }) => {
   const { build } = props;
+  const isSuccess = build.status === BuildStatus.Success;
+  const theme = isSuccess ? "success" : "danger";
+
   const estimatedFinishDate = addSeconds(parse(props.build.startDate), props.build.estimatedTotalSeconds);
   const differenceWithNow = distanceInWordsToNow(estimatedFinishDate, { includeSeconds: true, addSuffix: true });
-  return (<span className="remaining"><span className="build-number label label-default">{build.number}</span>{` will finish ${differenceWithNow}`}</span>);
+  return (
+    <span className="remaining">
+      <span className={`build-number label label-${theme}`}>{build.number}</span>
+      {` will finish ${differenceWithNow}`}
+    </span>
+  );
 };
