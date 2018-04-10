@@ -10,9 +10,10 @@
 
   @media (min-width: 480px) {
     font-size: 24px;
-  } @media (min-width: 768px) {
-  font-size: 56px;
-}
+  }
+  @media (min-width: 768px) {
+    font-size: 56px;
+  }
 }
 
 .view {
@@ -98,8 +99,23 @@
               background-color: #5cb85c;
               color: #eee;
 
+              .remaining,
+              .execution-timestamp {
+
+                .build-number.label-success {
+                  background-color: #76d776;
+                }
+              }
+
               &:hover {
                 background-color: #76d776;
+
+                .remaining,
+                .execution-timestamp {
+                  .build-number.label-success {
+                    background-color: #5cb85c;
+                  }
+                }
               }
             }
 
@@ -107,8 +123,23 @@
               background-color: #d9534f;
               color: #eee;
 
+              .remaining,
+              .execution-timestamp {
+
+                .build-number.label-danger {
+                  background-color: #fa5652;
+                }
+              }
+
               &:hover {
                 background-color: #fa5652;
+
+                .remaining,
+                .execution-timestamp {
+                  .build-number.label-danger {
+                    background-color: #d9534f;
+                  }
+                }
               }
             }
           }
@@ -128,7 +159,6 @@
             white-space: nowrap;
             overflow: visible;
           }
-
         }
       }
     }

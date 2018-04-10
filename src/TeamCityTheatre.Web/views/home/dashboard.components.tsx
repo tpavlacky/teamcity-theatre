@@ -116,13 +116,23 @@ const Branch = (props: { build: IDetailedBuild }) => {
 };
 
 const FinishDate = (props: { build: IDetailedBuild }) => {
-  const finishDate = parse(props.build.finishDate);
+  const { build } = props;
+  const isSuccess = build.status === BuildStatus.Success;
+  const theme = isSuccess ? "success" : "danger";
+
+  const finishDate = parse(build.finishDate);
   const differenceWithNow = distanceInWordsToNow(finishDate, { includeSeconds: true, addSuffix: true });
-  return (<span className="execution-timestamp">{`Finished: ${differenceWithNow}`}</span>);
+  return (
+    <span className="execution-timestamp">
+      <span className={`build-number label label-${theme}`}>{build.number}</span>
+      {` finished ${differenceWithNow}`}
+    </span>
+  );
 };
 
 const TimeRemaining = (props: { build: IDetailedBuild }) => {
+  const { build } = props;
   const estimatedFinishDate = addSeconds(parse(props.build.startDate), props.build.estimatedTotalSeconds);
   const differenceWithNow = distanceInWordsToNow(estimatedFinishDate, { includeSeconds: true, addSuffix: true });
-  return (<span className="remaining">{`Estimated finish: ${differenceWithNow}`}</span>);
+  return (<span className="remaining"><span className="build-number label label-default">{build.number}</span>{` will finish ${differenceWithNow}`}</span>);
 };
