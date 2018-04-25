@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@types/node": "^8.0.24",
-    "@types/react": "^16.0.2",
+    "@types/react": "^15.6.1",
     "@types/react-dom": "^15.5.3",
     "@types/react-sortable-hoc": "^0.6.0",
     "@types/uuid": "^3.4.0",
@@ -37,27 +37,5 @@
     "watch:pcss": "npm run pcss -- --watch=true",
     "build:debug": "npm run clean && npm run ts && npm run pcss && npm run js",
     "build:release": "npm run clean && npm run ts && npm run pcss && npm run js -- --env=production"
-  },
-  "resolutions": {
-    "core-js": "2.5.0",
-    "chalk": "2.1.0",
-    "yargs": "8.0.2",
-    "ansi-styles": "3.2.0",
-    "strip-ansi": "4.0.0",
-    "supports-color": "4.2.1",
-    "ansi-regex": "3.0.0",
-    "inherits": "2.0.3",
-    "kind-of": "4.0.0",
-    "is-number": "3.0.0",
-    "string_decoder": "1.0.3",
-    "minimist": "1.2.0",
-    "string-width": "2.1.1",
-    "is-fullwidth-code-point": "2.0.0",
-    "ajv": "5.2.2",
-    "assert-plus": "1.0.0",
-    "punycode": "1.4.1",
-    "camelcase": "4.1.0",
-    "cliui": "3.2.0",
-    "acorn": "5.1.1"
   }
 }
