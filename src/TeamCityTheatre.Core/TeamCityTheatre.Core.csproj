@@ -6,8 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.0" />
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
-    <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="RestSharp" Version="106.2.2" />
     <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
   </ItemGroup>
