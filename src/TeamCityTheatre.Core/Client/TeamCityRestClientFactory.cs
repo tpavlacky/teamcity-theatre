@@ -4,6 +4,10 @@ using RestSharp.Authenticators;
 using TeamCityTheatre.Core.Options;
 
 namespace TeamCityTheatre.Core.Client {
+  public interface ITeamCityRestClientFactory {
+    IRestClient Create(ConnectionOptions connectionOptions);
+  }
+
   public class TeamCityRestClientFactory : ITeamCityRestClientFactory {
     public IRestClient Create(ConnectionOptions connectionOptions) {
       if (connectionOptions == null) throw new ArgumentNullException(nameof(connectionOptions));
