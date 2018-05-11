@@ -6,6 +6,10 @@ using TeamCityTheatre.Core.DataServices;
 using TeamCityTheatre.Core.QueryServices.Models;
 
 namespace TeamCityTheatre.Core.QueryServices {
+  public interface ITileService {
+    Task<TileData> GetLatestTileDataAsync(View view, Tile tile);
+  }
+
   public class TileService : ITileService {
     readonly IBuildDataService _buildDataService;
 

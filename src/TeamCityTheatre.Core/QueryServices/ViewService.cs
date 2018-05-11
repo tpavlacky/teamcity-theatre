@@ -5,6 +5,10 @@ using TeamCityTheatre.Core.DataServices;
 using TeamCityTheatre.Core.QueryServices.Models;
 
 namespace TeamCityTheatre.Core.QueryServices {
+  public interface IViewService {
+    Task<ViewData> GetLatestViewDataAsync(string viewId);
+  }
+
   public class ViewService : IViewService {
     readonly IViewDataService _viewDataService;
     readonly ITileService _tileService;

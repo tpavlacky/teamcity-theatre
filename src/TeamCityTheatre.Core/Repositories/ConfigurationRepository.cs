@@ -5,6 +5,11 @@ using TeamCityTheatre.Core.ApplicationModels;
 using TeamCityTheatre.Core.Options;
 
 namespace TeamCityTheatre.Core.Repositories {
+  public interface IConfigurationRepository {
+    Configuration GetConfiguration();
+    void SaveConfiguration(Configuration configuration);
+  }
+
   public class ConfigurationRepository : IConfigurationRepository {
     readonly DirectoryInfo _workspace;
     readonly FileInfo _configurationFile;

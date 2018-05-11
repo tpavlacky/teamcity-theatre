@@ -5,6 +5,14 @@ using TeamCityTheatre.Core.ApplicationModels;
 using TeamCityTheatre.Core.Repositories;
 
 namespace TeamCityTheatre.Core.DataServices {
+  public interface IViewDataService {
+    IEnumerable<View> GetAllViews();
+    View GetViewById(Guid id);
+    View GetViewByName(string name);
+    View SaveView(View view);
+    void DeleteView(View view);
+  }
+
   public class ViewDataService : IViewDataService {
     readonly IConfigurationRepository _configurationRepository;
 

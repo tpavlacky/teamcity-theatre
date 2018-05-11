@@ -8,6 +8,11 @@ using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
 
 namespace TeamCityTheatre.Core.DataServices {
+  public interface IBuildDataService {
+    Task<IEnumerable<IDetailedBuild>> GetBuildsOfBuildConfigurationAsync(string buildConfigurationId, int count = 100);
+    Task<IDetailedBuild> GetBuildDetailsAsync(int buildId);
+  }
+
   public class BuildDataService : IBuildDataService {
     readonly ITeamCityClient _teamCityClient;
     readonly IBuildMapper _buildMapper;
