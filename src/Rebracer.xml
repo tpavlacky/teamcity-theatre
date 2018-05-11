@@ -338,6 +338,7 @@
         <PropertyValue name="Style_PreferObjectInitializer">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferPatternMatchingOverAsWithNullCheck">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferPatternMatchingOverIsWithCastCheck">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
+        <PropertyValue name="Style_PreferReadonly">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_PreferThrowExpression">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="true" DiagnosticSeverity="Info" /&gt;</PropertyValue>
         <PropertyValue name="Style_QualifyEventAccess">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="false" DiagnosticSeverity="Hidden" /&gt;</PropertyValue>
         <PropertyValue name="Style_QualifyFieldAccess">&lt;CodeStyleOption SerializationVersion="1" Type="Boolean" Value="false" DiagnosticSeverity="Hidden" /&gt;</PropertyValue>
@@ -384,7 +385,10 @@
         <PropertyValue name="AutoIndentOnTab">false</PropertyValue>
         <PropertyValue name="AutoPchCacheQuota">5120</PropertyValue>
         <PropertyValue name="AutoTuneMaximumFindReferencesThreads">true</PropertyValue>
+        <PropertyValue name="ClangFormatExePath"></PropertyValue>
+        <PropertyValue name="ClangFormatExecution">1</PropertyValue>
         <PropertyValue name="ColorizeInactiveBlocksDifferently">true</PropertyValue>
+        <PropertyValue name="DefaultFormattingStyle">0</PropertyValue>
         <PropertyValue name="DisableAutoPch">false</PropertyValue>
         <PropertyValue name="DisableBrowsingUpToDateCheck">true</PropertyValue>
         <PropertyValue name="DisableCreateDeclDefnScan">false</PropertyValue>
@@ -392,7 +396,9 @@
         <PropertyValue name="DisableErrorReporting">false</PropertyValue>
         <PropertyValue name="DisableHLSLIntelliSense">true</PropertyValue>
         <PropertyValue name="DisableIntelliSenseErrorsInErrorList">false</PropertyValue>
+        <PropertyValue name="DontShowClangFormatFileFound">false</PropertyValue>
         <PropertyValue name="EnableChangeSignature">false</PropertyValue>
+        <PropertyValue name="EnableClangFormatSupport">true</PropertyValue>
         <PropertyValue name="EnableExpandPrecedence">false</PropertyValue>
         <PropertyValue name="EnableExpandScopes">false</PropertyValue>
         <PropertyValue name="EnableExtractFunction">false</PropertyValue>
@@ -489,6 +495,7 @@
         <PropertyValue name="SuspendNewSingleFileISenseDuringDebugging">false</PropertyValue>
         <PropertyValue name="TrimSpaceAroundScope">true</PropertyValue>
         <PropertyValue name="TrimSpaceUnaryOperator">true</PropertyValue>
+        <PropertyValue name="UseCustomClangFormatExe">false</PropertyValue>
       </ToolsOptionsSubCategory>
       <ToolsOptionsSubCategory name="TypeScript Specific">
         <PropertyValue name="AutomaticallyCompileTypeScriptFilesWhenSavedWhenNoSolution">false</PropertyValue>
