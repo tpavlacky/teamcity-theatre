@@ -2,6 +2,10 @@
 using TeamCityTheatre.Core.Models;
 
 namespace TeamCityTheatre.Core.Client.Mappers {
+  public interface IAgentMapper {
+    Agent Map(AgentResponse agent);
+  }
+
   public class AgentMapper : IAgentMapper {
     public Agent Map(AgentResponse agent) {
       if (agent == null) return null;

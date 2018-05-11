@@ -1,6 +1,10 @@
 ﻿using TeamCityTheatre.Core.Models;
 
 namespace TeamCityTheatre.Core.Client.Mappers {
+  public interface IBuildStatusMapper {
+    BuildStatus Map(string buildStatus);
+  }
+
   public class BuildStatusMapper : IBuildStatusMapper {
     public BuildStatus Map(string buildStatus) {
       switch (buildStatus) {

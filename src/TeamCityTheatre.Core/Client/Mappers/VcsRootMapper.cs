@@ -3,6 +3,10 @@ using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
 
 namespace TeamCityTheatre.Core.Client.Mappers {
+  public interface IVcsRootMapper {
+    VcsRoot Map(VcsRootResponse vcsRootResponse);
+  }
+
   public class VcsRootMapper : IVcsRootMapper {
     readonly Lazy<IProjectMapper> _projectMapper;
     readonly IPropertyMapper _propertyMapper;

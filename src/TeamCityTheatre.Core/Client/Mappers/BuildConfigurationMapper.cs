@@ -5,6 +5,11 @@ using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
 
 namespace TeamCityTheatre.Core.Client.Mappers {
+  public interface IBuildConfigurationMapper {
+    BuildConfiguration Map(BuildTypeResponse buildType);
+    IReadOnlyCollection<BuildConfiguration> Map(BuildTypesResponse buildTypes);
+  }
+
   public class BuildConfigurationMapper : IBuildConfigurationMapper {
     readonly IAgentRequirementMapper _agentRequirementMapper;
     readonly IArtifactDependencyMapper _artifactDependencyMapper;

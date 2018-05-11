@@ -3,7 +3,12 @@ using System.Linq;
 using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
 
-namespace TeamCityTheatre.Core.Client.Mappers {
+namespace TeamCityTheatre.Core.Client.Mappers {  
+  public interface IBuildChangeMapper {
+    BuildChange Map(BuildChangeResponse buildChange);
+    IReadOnlyCollection<BuildChange> Map(BuildChangesResponse buildChanges);
+  }
+
   public class BuildChangeMapper : IBuildChangeMapper {
     public BuildChange Map(BuildChangeResponse buildChange) {
       if (buildChange == null)

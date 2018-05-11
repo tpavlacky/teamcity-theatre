@@ -4,7 +4,12 @@ using System.Linq;
 using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
 
-namespace TeamCityTheatre.Core.Client.Mappers {
+namespace TeamCityTheatre.Core.Client.Mappers {  
+  public interface ISnapshotDependencyMapper {
+    SnapshotDependency Map(SnapshotDependencyResponse snapshotDependency);
+    IReadOnlyCollection<SnapshotDependency> Map(SnapshotDependenciesResponse snapshotDependencies);
+  }
+
   public class SnapshotDependencyMapper : ISnapshotDependencyMapper {
     readonly IPropertyMapper _propertyMapper;
 
