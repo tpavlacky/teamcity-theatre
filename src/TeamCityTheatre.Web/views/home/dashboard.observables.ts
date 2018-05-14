@@ -1,5 +1,5 @@
-﻿import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
+﻿import {Observable, Subject} from "rxjs-compat";
+
 import "rxjs/add/observable/dom/ajax";
 import "rxjs/add/observable/of";
 import "rxjs/add/observable/defer";
@@ -18,23 +18,26 @@ import {IView, IViewData} from "../shared/contracts";
 
 // fetching the initial set of views
 
-export const allViews: Observable<IView[]> = Observable.defer(() => Observable.ajax.getJSON<IView[]>("api/views"));
+export const allViews: Observable<IView[] | null> = Observable.defer(() => Observable.ajax.getJSON<IView[]>("api/views"));
 
 // selecting a view
 
 const selectedViewsSubject = new Subject<IView>();
 export const selectView = (view: IView) => selectedViewsSubject.next(view);
-export const selectedViews: Observable<IView> = selectedViewsSubject;
+export const selectedViews: Observable<IView | null> = selectedViewsSubject;
 
 // fetching the data of a view
-export const selectedViewData = selectedViews.switchMap(
-  (selectedView: IView) => Observable.of(null)
-    .delay(3000)
-    .mergeMap(() => Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
-      .catch(() => Observable.empty<IViewData>()))
-    .repeat()
-    .merge(Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
-      .catch(() => Observable.empty<IViewData>()))
+export const selectedViewData : Observable<IViewData | null> = selectedViews
+  .switchMap(
+  (selectedView: IView | null) => selectedView == null
+    ? Observable.empty()
+    : Observable.of(null)
+                .delay(3000)
+                .mergeMap(() => Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
+                  .catch(() => Observable.empty()))
+                .repeat()
+                .merge(Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
+                  .catch(() => Observable.empty()))
 );
 
 // combining all of the above in a single state
@@ -45,14 +48,15 @@ export interface IDashboardState {
   selectedViewData: IViewData | null;
 }
 
-export const state = Observable.combineLatest(
+export const state : Observable<IDashboardState> = Observable.combineLatest(
   allViews.startWith(null),
   selectedViews.startWith(null),
   selectedViewData.startWith(null),
-  (views: IView[], selectedView: IView, viewData: IViewData) => {
-    return {
+  (views: IView[] | null, selectedView: IView | null, viewData: IViewData | null) => {
+    const s: IDashboardState = {
       views: views,
       selectedView: selectedView,
       selectedViewData: viewData
     };
+    return s;
   });

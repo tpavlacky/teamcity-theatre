@@ -1,6 +1,6 @@
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
-import "../shared/operators/debug";
+import {Observable, Subject} from "rxjs-compat";
+
+import { debug } from "../shared/operators/debug";
 import "rxjs/add/observable/dom/ajax";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/share";
@@ -17,6 +17,6 @@ export const selectedProjects: Observable<Project | null> = selectedProjectsSubj
   .switchMap(project => Observable.ajax.getJSON<IDetailedProject>(`api/projects/${project.id}`)
     .map(detailedProject => project.withBuildConfigurations(detailedProject.buildConfigurations.map(BuildConfiguration.fromContract)))
     .startWith(null))
-  .debug("Selected project")
+  .pipe(debug("Selected project"))
   .startWith(null)
   .share();

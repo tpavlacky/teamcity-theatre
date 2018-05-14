@@ -1,4 +1,6 @@
-﻿import {createElement} from "react";
+﻿import "rxjs-compat";
+
+import {createElement} from "react";
 import {render} from "react-dom";
 
 import {Settings} from "./settings.components";
