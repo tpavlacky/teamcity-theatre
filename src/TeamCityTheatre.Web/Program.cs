@@ -40,6 +40,7 @@ namespace TeamCityTheatre.Web {
 
       config.AddJsonFile("appsettings.json", false, true);
 
+      // see https://stackoverflow.com/questions/31049152/publish-to-iis-setting-environment-variable
       config.AddEnvironmentVariables();
 
       if (args != null) {
