@@ -10,7 +10,7 @@ namespace TeamCityTheatre.Core.Client.Mappers {
     IReadOnlyCollection<BuildStep> Map(BuildStepsResponse buildStep);
   }
 
-  internal class BuildStepMapper : IBuildStepMapper {
+  public class BuildStepMapper : IBuildStepMapper {
     readonly IPropertyMapper _propertyMapper;
 
     public BuildStepMapper(IPropertyMapper propertyMapper) {

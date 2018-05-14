@@ -16,7 +16,7 @@ namespace TeamCityTheatre.Core.Client {
     readonly ILogger _logger;
 
     public LoggingTeamCityClient(ILogger logger, T inner) {
-      _logger = logger.ForContext<ITeamCityClient>() ?? throw new ArgumentNullException(nameof(logger));
+      _logger = logger.ForContext<T>() ?? throw new ArgumentNullException(nameof(logger));
       _inner = inner ?? throw new ArgumentNullException(nameof(inner));
     }
 

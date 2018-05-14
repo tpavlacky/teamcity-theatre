@@ -2,6 +2,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
 namespace TeamCityTheatre.Web {
@@ -23,6 +24,7 @@ namespace TeamCityTheatre.Web {
         .CaptureStartupErrors(true)
         .UseSetting(WebHostDefaults.DetailedErrorsKey, "True")
         .UseDefaultServiceProvider((context, options) => options.ValidateScopes = context.HostingEnvironment.IsDevelopment())
+        .ConfigureServices(sc => sc.AddSingleton(logger))
         .UseStartup<Startup>()
         .UseSerilog(logger, dispose: true)
         .Build();
