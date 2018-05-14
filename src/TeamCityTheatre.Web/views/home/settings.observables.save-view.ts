@@ -1,3 +1,5 @@
+
+import {switchMap, map, share} from 'rxjs/operators';
 import { Observable, Subject } from "rxjs-compat";
 
 import "rxjs/add/observable/dom/ajax";
@@ -11,11 +13,11 @@ import { IView } from "../shared/contracts";
 
 const savedViewsSubject = new Subject<View>();
 export const saveView = (view: View) => savedViewsSubject.next(view);
-export const savedViews: Observable<View> = savedViewsSubject
-  .switchMap(savedView => Observable.ajax
-    .post("api/views", savedView, {"Content-Type": "application/json"})
-    .map(xhr => xhr.response as IView)
-    .map(View.fromContract)
-  )
-  .pipe(debug("Saved view"))
-  .share();
+export const savedViews: Observable<View> = savedViewsSubject.pipe(
+  switchMap(savedView => Observable.ajax
+    .post("api/views", savedView, {"Content-Type": "application/json"}).pipe(
+    map(xhr => xhr.response as IView),
+    map(View.fromContract),)
+  ))
+  .pipe(debug("Saved view")).pipe(
+  share());

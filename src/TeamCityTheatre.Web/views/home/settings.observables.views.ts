@@ -1,3 +1,5 @@
+
+import {scan, merge, startWith, switchMap, map} from 'rxjs/operators';
 import { Observable, Subject } from "rxjs-compat";
 
 import { debug } from "../shared/operators/debug";
@@ -21,18 +23,18 @@ export const updateView = (view: View) => {
   updatedViewsSubject.next(view);
   return view
 };
-export const updatedViews: Observable<View> = updatedViewsSubject.merge(savedViews).pipe(debug("Update view"));
+export const updatedViews: Observable<View> = updatedViewsSubject.pipe(merge(savedViews)).pipe(debug("Update view"));
 
-const initialViews: Observable<View[]> = deletedViews // every time a view is deleted, we fetch the list of views again
-  .startWith({})
-  .switchMap(() => Observable.ajax.getJSON<IView[]>("api/views"))
-  .map(vs => vs.map(View.fromContract))
-  .startWith([])
+const initialViews: Observable<View[]> = deletedViews.pipe( // every time a view is deleted, we fetch the list of views again
+  startWith({}),
+  switchMap(() => Observable.ajax.getJSON<IView[]>("api/views")),
+  map(vs => vs.map(View.fromContract)),
+  startWith([]),)
   .pipe(debug("Initial views"));
 
-export const views: Observable<View[]> = initialViews.switchMap(initialVs =>
-  updatedViews
-    .scan((previousViews, updatedView) => mergeById(updatedView, previousViews), initialVs)
-    .startWith(initialVs))
+export const views: Observable<View[]> = initialViews.pipe(switchMap(initialVs =>
+  updatedViews.pipe(
+    scan((previousViews, updatedView) => mergeById(updatedView, previousViews), initialVs),
+    startWith(initialVs),)))
 
   .pipe(debug("Views"));

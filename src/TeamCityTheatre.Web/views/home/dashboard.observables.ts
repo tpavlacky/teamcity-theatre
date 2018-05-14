@@ -1,4 +1,8 @@
-﻿import {Observable, Subject} from "rxjs-compat";
+
+import {combineLatest as observableCombineLatest, of as observableOf, empty as observableEmpty, defer as observableDefer} from 'rxjs';
+
+import {startWith, switchMap, delay, mergeMap, repeat, merge, catchError} from 'rxjs/operators';
+import {Observable, Subject} from "rxjs-compat";
 
 import "rxjs/add/observable/dom/ajax";
 import "rxjs/add/observable/of";
@@ -18,7 +22,7 @@ import {IView, IViewData} from "../shared/contracts";
 
 // fetching the initial set of views
 
-export const allViews: Observable<IView[] | null> = Observable.defer(() => Observable.ajax.getJSON<IView[]>("api/views"));
+export const allViews: Observable<IView[] | null> = observableDefer(() => Observable.ajax.getJSON<IView[]>("api/views"));
 
 // selecting a view
 
@@ -27,18 +31,18 @@ export const selectView = (view: IView) => selectedViewsSubject.next(view);
 export const selectedViews: Observable<IView | null> = selectedViewsSubject;
 
 // fetching the data of a view
-export const selectedViewData : Observable<IViewData | null> = selectedViews
-  .switchMap(
+export const selectedViewData : Observable<IViewData | null> = selectedViews.pipe(
+  switchMap(
   (selectedView: IView | null) => selectedView == null
-    ? Observable.empty()
-    : Observable.of(null)
-                .delay(3000)
-                .mergeMap(() => Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
-                  .catch(() => Observable.empty()))
-                .repeat()
-                .merge(Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`)
-                  .catch(() => Observable.empty()))
-);
+    ? observableEmpty()
+    : observableOf(null).pipe(
+                delay(3000),
+                mergeMap(() => Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`).pipe(
+                  catchError(() => observableEmpty()))),
+                repeat(),
+                merge(Observable.ajax.getJSON<IViewData>(`api/viewdata/${selectedView.id}`).pipe(
+                  catchError(() => observableEmpty()))),)
+));
 
 // combining all of the above in a single state
 
@@ -48,10 +52,10 @@ export interface IDashboardState {
   selectedViewData: IViewData | null;
 }
 
-export const state : Observable<IDashboardState> = Observable.combineLatest(
-  allViews.startWith(null),
-  selectedViews.startWith(null),
-  selectedViewData.startWith(null),
+export const state : Observable<IDashboardState> = observableCombineLatest(
+  allViews.pipe(startWith(null)),
+  selectedViews.pipe(startWith(null)),
+  selectedViewData.pipe(startWith(null)),
   (views: IView[] | null, selectedView: IView | null, viewData: IViewData | null) => {
     const s: IDashboardState = {
       views: views,

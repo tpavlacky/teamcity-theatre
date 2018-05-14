@@ -1,4 +1,6 @@
-﻿import {Observable} from "rxjs-compat";
+
+import {combineLatest as observableCombineLatest} from 'rxjs';
+import {Observable} from "rxjs-compat";
 import { debug } from "../shared/operators/debug";
 
 import "rxjs/add/observable/combineLatest";
@@ -20,7 +22,7 @@ export interface ISettingsState {
   selectedProject: Project | null;
 }
 
-export const state: Observable<ISettingsState> = Observable.combineLatest(
+export const state: Observable<ISettingsState> = observableCombineLatest(
   views, deleteViewRequests, selectedViews, rootProjects, selectedProjects,
   (vs, dvr, sv, rp, sp) => ({
     views: vs,
