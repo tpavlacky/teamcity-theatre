@@ -39,5 +39,11 @@
     "watch:pcss": "npm run pcss -- --watch=true",
     "build:debug": "npm run clean && npm run ts && npm run pcss && npm run js -- --mode=development",
     "build:release": "npm run clean && npm run ts && npm run pcss && npm run js"
+  },
+  "resolutions": {
+    "@types/react" : "15.6.15",
+    "@types/react-dom" : "15.5.7",
+    "react": "15.6.2",
+    "react-dom": "15.6.2"
   }
 }
