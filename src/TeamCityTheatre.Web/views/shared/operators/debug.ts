@@ -1,7 +1,5 @@
-
-import {tap} from 'rxjs/operators';
-import { Observable } from 'rxjs-compat';
-import "rxjs/add/operator/do";
+import { tap } from 'rxjs/operators';
+import { Observable } from "rxjs";
 
 const isProduction: boolean = process && process.env && process.env.NODE_ENV === "production";
 

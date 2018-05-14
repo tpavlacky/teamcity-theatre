@@ -1,23 +1,11 @@
-
-import {defer as observableDefer} from 'rxjs';
-
-import {merge, scan, startWith, map, switchMap} from 'rxjs/operators';
-import { Observable, Subject } from "rxjs-compat";
-
+import { defer as observableDefer, Observable, Subject } from 'rxjs';
+import { map, merge, scan, startWith, switchMap } from 'rxjs/operators';
 import { debug } from "../shared/operators/debug";
-
-import "rxjs/add/observable/defer";
-import "rxjs/add/observable/dom/ajax";
-
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/merge";
-import "rxjs/add/operator/scan";
-import "rxjs/add/operator/startWith";
-import "rxjs/add/operator/switchMap";
 
 import { IBasicProject } from "../shared/contracts";
 import { Project } from "../shared/models";
 import { selectedProjects } from "./settings.observables.selected-project";
+import { ajax } from 'rxjs/ajax';
 
 const toProjects = (basicProjects: IBasicProject[]) => {
   const projects = basicProjects.map(p => new Project(p));
@@ -31,7 +19,7 @@ const toProjects = (basicProjects: IBasicProject[]) => {
   return projects;
 };
 
-const initialRootProjects: Observable<Project> = observableDefer(() => Observable.ajax.getJSON<IBasicProject[]>("api/projects")).pipe(
+const initialRootProjects: Observable<Project> = observableDefer(() => ajax.getJSON<IBasicProject[]>("api/projects")).pipe(
   map(toProjects),
   map(projects => projects.filter(p => p.parentProjectId === null)[0]),
   map(rootProject => rootProject.expand()),)

@@ -1,9 +1,5 @@
-
-import {combineLatest as observableCombineLatest} from 'rxjs';
-import {Observable} from "rxjs-compat";
+import { combineLatest as observableCombineLatest, Observable } from 'rxjs';
 import { debug } from "../shared/operators/debug";
-
-import "rxjs/add/observable/combineLatest";
 
 import { Project, View } from "../shared/models";
 
