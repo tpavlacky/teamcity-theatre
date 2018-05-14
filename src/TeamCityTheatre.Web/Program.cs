@@ -42,10 +42,6 @@ namespace TeamCityTheatre.Web {
 
       config.AddEnvironmentVariables();
 
-      if (string.Equals(environment, EnvironmentName.Development, StringComparison.OrdinalIgnoreCase)) {
-        config.AddUserSecrets<Startup>();
-      }
-
       if (args != null) {
         config.AddCommandLine(args);
       }
