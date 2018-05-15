@@ -1,6 +1,6 @@
 import { ajax } from 'rxjs/ajax';
-import { map, merge, scan, startWith, switchMap } from 'rxjs/operators';
-import { Observable, Subject } from "rxjs";
+import { map, scan, startWith, switchMap } from 'rxjs/operators';
+import { Observable, Subject, merge } from "rxjs";
 
 import { debug } from "../shared/operators/debug";
 
@@ -16,8 +16,7 @@ export const updateView = (view: View) => {
   return view
 };
 
-export const updatedViews: Observable<View> = updatedViewsSubject
-  .pipe(merge(savedViews))
+export const updatedViews: Observable<View> = merge(updatedViewsSubject, savedViews)
   .pipe(debug("Update view"))
 ;
 

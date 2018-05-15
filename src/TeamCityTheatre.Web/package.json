@@ -35,7 +35,7 @@
     "js:debug": "webpack --config=webpack.config.js --colors --hide-modules --mode=development",
     "pcss": "postcss views/**/*.pcss --use postcss-nested --dir wwwroot/css --ext=.css --no-map true",
     "watch:ts": "npm run ts -- --watch",
-    "watch:js": "npm run js -- --watch=true",
+    "watch:js": "npm run js:debug -- --watch=true",
     "watch:pcss": "npm run pcss -- --watch=true",
     "build:debug": "npm run clean && npm run ts && npm run pcss && npm run js -- --mode=development",
     "build:release": "npm run clean && npm run ts && npm run pcss && npm run js"

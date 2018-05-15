@@ -9,7 +9,7 @@ namespace TeamCityTheatre.Web.Controllers {
       return RedirectToAction("Dashboard");
     }
 
-    [HttpGet("dashboard")]
+    [HttpGet("dashboard/{*ignored}")]
     public IActionResult Dashboard() {
       return View("dashboard");
     }

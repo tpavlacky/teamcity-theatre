@@ -1,5 +1,5 @@
-import { defer as observableDefer, Observable, Subject } from 'rxjs';
-import { map, merge, scan, startWith, switchMap } from 'rxjs/operators';
+import { defer as observableDefer, Observable, Subject, merge } from 'rxjs';
+import { map, scan, startWith, switchMap } from 'rxjs/operators';
 import { debug } from "../shared/operators/debug";
 
 import { IBasicProject } from "../shared/contracts";
@@ -28,7 +28,7 @@ const initialRootProjects: Observable<Project> = observableDefer(() => ajax.getJ
 const manualProjectUpdates = new Subject<Project>();
 export const updateProject = (project: Project) => manualProjectUpdates.next(project);
 
-const projectUpdates: Observable<Project | null> = manualProjectUpdates.pipe(merge(selectedProjects))
+const projectUpdates: Observable<Project | null> = merge(manualProjectUpdates, selectedProjects)
   .pipe(debug("Project update"));
 
 export const rootProjects: Observable<Project> = initialRootProjects.pipe(switchMap((initialRootProject: Project) =>
