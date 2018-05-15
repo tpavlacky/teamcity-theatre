@@ -26,7 +26,7 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 
 ## Requirements
 
-- A TeamCity server (d'uh)
+- A TeamCity server (d'uh). TeamCityTheatre is confirmed to be compatible with 2017.1.4 (build 47070). Other versions may or may not work, JetBrains likes to break its own APIs from time to time.
 - A Windows Server with IIS to host the web application, or your Windows dev machine if you just want to try it out.
 - Some knowledge on how to add a .NET web application in IIS, or the willingness to learn.
 - A nice cup of coffee to drink while you install this. 
