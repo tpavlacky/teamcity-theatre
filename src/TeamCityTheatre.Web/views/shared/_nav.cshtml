@@ -1,4 +1,6 @@
-﻿<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+﻿@using TeamCityTheatre.Web.Controllers
+
+<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">TeamCity Theatre</a>
@@ -6,10 +8,10 @@
 
     <ul class="nav navbar-nav">
       <li>
-        <a asp-controller="Home" asp-action="Dashboard"><i class="fa fa-tachometer"></i> Dashboard</a>
+        <a href="@Url.Action(nameof(HomeController.Dashboard), "Home", new { ignored = string.Empty })"><i class="fa fa-tachometer"></i> Dashboard</a>
       </li>
       <li>
-        <a asp-controller="Home" asp-action="Settings"><i class="fa fa-wrench"></i> Settings</a>
+        <a href="@Url.Action(nameof(HomeController.Settings), "Home")"><i class="fa fa-wrench"></i> Settings</a>
       </li>
     </ul>
   </div>

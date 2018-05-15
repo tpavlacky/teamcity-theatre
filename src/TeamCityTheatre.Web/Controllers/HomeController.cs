@@ -10,7 +10,7 @@ namespace TeamCityTheatre.Web.Controllers {
     }
 
     [HttpGet("dashboard/{*ignored}")]
-    public IActionResult Dashboard() {
+    public IActionResult Dashboard(string ignored) {
       return View("dashboard");
     }
 

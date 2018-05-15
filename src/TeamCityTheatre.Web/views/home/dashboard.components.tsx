@@ -1,5 +1,4 @@
 ﻿import { createElement, MouseEvent } from "react";
-import { selectView } from "./dashboard.observables";
 import { IView, IViewData, ITileData, BuildStatus, IDetailedBuild } from "../shared/contracts";
 import * as parse from "date-fns/parse";
 import * as addSeconds from "date-fns/add_seconds";
@@ -32,7 +31,7 @@ export const Dashboard =
 const Views = (props: { views: IView[] }) => (
   <div id="views">
     {props.views.map(view => (
-      <a className="btn btn-primary view" id={view.id} key={view.id} onClick={() => selectView(view)}>
+      <a className="btn btn-primary view" id={view.id} key={view.id} href={`dashboard/${view.name.toLowerCase()}`}>
         {view.name} <span className="badge">{view.tiles.length} tiles</span>
       </a>))}
   </div>

@@ -18,11 +18,6 @@ export const allViews: Observable<IView[] | null> = observableDefer(() => ajax.g
 
 // selecting a view
 
-// manually selecting a view with the subject
-const selectedViewsSubject = new Subject<IView>();
-export const selectView = (view: IView) => selectedViewsSubject.next(view);
-const manuallySelectedViews: Observable<IView> = selectedViewsSubject;
-
 // if a view is specified in the URL, select it
 const selectedViewsFromUrl: Observable<IView | null> = observableCombineLatest(routes, allViews.pipe(take(1)))
   .pipe(
@@ -50,7 +45,6 @@ const automaticallySelectedSingleView: Observable<IView | null> = selectedViewsF
 ;
 
 export const selectedViews: Observable<IView | null> = merge(
-  manuallySelectedViews,
   selectedViewsFromUrl,
   automaticallySelectedSingleView
 );
