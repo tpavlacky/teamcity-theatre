@@ -24,7 +24,7 @@ namespace TeamCityTheatre.Core.Client {
       var parameters = string.Join(", ", request.Parameters.Select(p => $"{p.Name} = {p.Value}"));
       _logger.Information("[REQUEST ] {Method} {Url} with parameters {Parameters}", request.Method, request.Resource, parameters);
       var response = await _inner.ExecuteRequestAsync<TResponse>(request);
-      _logger.Information("[RESPONSE] {Data}", response);
+      _logger.Information("[RESPONSE] {@Data}", response);
       return response;
     }
   }
