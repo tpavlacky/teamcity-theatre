@@ -29,7 +29,7 @@ export const Views = (props: { views: View[] | null, selectedView: View | null, 
 
 const handleCreateViewButtonClick = () => updateView(View.newView());
 
-const CreateViewButton = (props: {}) => (
+const CreateViewButton = () => (
   <button className="add-view-button btn btn-success" onClick={handleCreateViewButtonClick}>
     <i className="fa fa-plus"/> Create a new view
   </button>
@@ -42,6 +42,7 @@ const ViewsTable = (props: { views: View[], selectedView: View | null, deleteVie
       <tr>
         <th>Name</th>
         <th># Branches per tile</th>
+        <th># Columns</th>
         <th/>
       </tr>
       </thead>
@@ -66,6 +67,9 @@ const ViewRow = (props: { view: View, selectedView: View | null, deleteViewReque
       <td className="view-branches-per-tile">
         <DefaultNumberOfBranchesPerTile view={props.view}/>
       </td>
+      <td className="view-number-of-columns">
+        <NumberOfColumns view={props.view}/>
+      </td>
       <td>
         <ViewActions view={view} deleteViewRequest={deleteViewRequest}/>
       </td>
@@ -79,6 +83,7 @@ const ViewName = (props: { view: View }) => {
                   name="view-name-input"
                   className="form-control"
                   value={props.view.name}
+                  ref={(el: HTMLInputElement) => el && el.focus()}
                   onClick={stopPropagation}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withName(event.currentTarget.value))}
                   onKeyUp={onEnter(() => saveView(props.view))}/>;
@@ -95,6 +100,18 @@ const DefaultNumberOfBranchesPerTile = (props: { view: View }) => {
                   onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withDefaultNumberOfBranchesPerTile(+event.currentTarget.value))}
                   onKeyUp={onEnter(() => saveView(props.view))}/>;
   return <span>{props.view.defaultNumberOfBranchesPerTile}</span>;
+};
+
+const NumberOfColumns = (props: { view: View }) => {
+  if (props.view.isEditing)
+    return <input type="number"
+                  name="view-number-of-columns"
+                  className="form-control"
+                  value={props.view.numberOfColumns}
+                  onClick={stopPropagation}
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withNumberOfColumns(+event.currentTarget.value))}
+                  onKeyUp={onEnter(() => saveView(props.view))}/>;
+  return <span>{props.view.numberOfColumns}</span>;
 };
 
 const ViewActions = (props: { view: View, deleteViewRequest: View | null }) => {
@@ -166,7 +183,7 @@ const handleCancelDeleteViewButtonClick = (event: MouseEvent<HTMLButtonElement>)
   requestDeleteView(null);
 };
 
-const CancelDeleteViewButton = (props: {}) => (
+const CancelDeleteViewButton = () => (
   <button className="cancel-delete-view-button btn btn-default"
           onClick={handleCancelDeleteViewButtonClick}
           title="Cancel">No, keep it</button>

@@ -4,6 +4,7 @@ export interface IView {
   id: Guid;
   name: string;
   defaultNumberOfBranchesPerTile: number;
+  numberOfColumns: number;
   tiles: ITile[];
 }
 

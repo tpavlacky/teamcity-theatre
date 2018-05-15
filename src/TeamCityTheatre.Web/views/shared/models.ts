@@ -109,13 +109,15 @@ export class View {
   id: Guid;
   name: string;
   defaultNumberOfBranchesPerTile: number;
+  numberOfColumns: number;
   tiles: Tile[];
   isEditing: boolean;
 
-  constructor(params: { id: Guid, name: string, defaultNumberOfBranchesPerTile: number, tiles: Tile[], isEditing?: boolean }) {
+  constructor(params: { id: Guid, name: string, defaultNumberOfBranchesPerTile: number, numberOfColumns: number, tiles: Tile[], isEditing?: boolean }) {
     this.id = params.id;
     this.name = params.name;
     this.defaultNumberOfBranchesPerTile = params.defaultNumberOfBranchesPerTile;
+    this.numberOfColumns = params.numberOfColumns;
     this.tiles = params.tiles;
     this.isEditing = typeof params.isEditing == "undefined" ? false : params.isEditing;
   }
@@ -131,6 +133,13 @@ export class View {
     return new View({
       ...(this as View),
       defaultNumberOfBranchesPerTile: defaultNumberOfBranchesPerTile
+    });
+  }
+
+  withNumberOfColumns(numberOfColumns: number) {
+    return new View({
+      ...(this as View),
+      numberOfColumns: numberOfColumns
     });
   }
 
@@ -178,6 +187,7 @@ export class View {
       id: view.id,
       name: view.name,
       defaultNumberOfBranchesPerTile: view.defaultNumberOfBranchesPerTile,
+      numberOfColumns: view.numberOfColumns,
       tiles: view.tiles.map(Tile.fromContract)
     })
   }
@@ -187,6 +197,7 @@ export class View {
       id: newguid(),
       name: "New view",
       defaultNumberOfBranchesPerTile : 3,
+      numberOfColumns: 6,
       tiles: [],
       isEditing: true
     })

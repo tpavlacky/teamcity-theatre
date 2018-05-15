@@ -67,8 +67,10 @@ const View = (props: { view: IView, data: IViewData }) => (
 const Tile = (props: { view: IView, data: ITileData }) => {
   const buildStatus = BuildStatus[props.data.combinedBuildStatus].toLowerCase();
   const height = `height-${props.view.defaultNumberOfBranchesPerTile}`;
+  const numberOfColumns = props.view.numberOfColumns || 6;
+  const width = `width-${numberOfColumns}`;
   return (
-    <div id={props.data.id} className={`tile ${buildStatus} ${height} col-xs-6 col-sm-4 col-md-3 col-lg-2`}>
+    <div id={props.data.id} className={`tile ${buildStatus} ${height} ${width}`}>
       <h4 className="tile-title">{props.data.label}</h4>
       <div className="tile-builds">
         { props.data.builds.map(build => <Build key={build.id} build={build} />) }

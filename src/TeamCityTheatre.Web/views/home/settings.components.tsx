@@ -10,12 +10,12 @@ export const Settings = (props: ISettingsState) => {
   return (
     <div id="config">
       <div id="views-section" className="section row">
-        <div className="col-md-4"><Views views={views} selectedView={selectedView} deleteViewRequest={deleteViewRequest}/></div>
-        <div className="col-md-8"><SelectedView selectedView={selectedView}/></div>
+        <div className="col-md-5"><Views views={views} selectedView={selectedView} deleteViewRequest={deleteViewRequest}/></div>
+        <div className="col-md-7"><SelectedView selectedView={selectedView}/></div>
       </div>
       <div id="projects-section" className="section row">
-        <div className="col-md-4"><Projects rootProject={rootProject} selectedProject={selectedProject}/></div>
-        <div className="col-md-8"><SelectedProject selectedProject={selectedProject} selectedView={selectedView} /></div>
+        <div className="col-md-5"><Projects rootProject={rootProject} selectedProject={selectedProject}/></div>
+        <div className="col-md-7"><SelectedProject selectedProject={selectedProject} selectedView={selectedView} /></div>
       </div>
     </div>
   );

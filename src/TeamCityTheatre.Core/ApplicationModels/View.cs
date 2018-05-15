@@ -10,6 +10,7 @@ namespace TeamCityTheatre.Core.ApplicationModels {
     public Guid Id { get; set; }
     public string Name { get; set; }
     public int DefaultNumberOfBranchesPerTile { get; set; }
+    public int NumberOfColumns { get; set; }
     public ICollection<Tile> Tiles { get; set; }
   }
 }
