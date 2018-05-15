@@ -21,8 +21,8 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 - First-class support for branches! (This is a feature many others are lacking)
 - Create multiple dashboards, one for each team!
 - Customizable amount of branches shown per tile
+- Customizable amount of columns shown per view, make optimal use of the size of your wall TV!
 - Customizable labels on tiles
-- Responsive design using Bootstrap, make optimal use of the size of your wall TV!
 
 ## Requirements
 
