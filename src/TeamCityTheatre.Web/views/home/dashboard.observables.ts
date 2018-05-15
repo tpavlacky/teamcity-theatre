@@ -5,7 +5,6 @@ import {
   merge,
   Observable,
   of as observableOf,
-  Subject
 } from "rxjs";
 
 import { catchError, delay, filter, isEmpty, map, mergeMap, repeat, startWith, switchMap, take } from 'rxjs/operators';
@@ -81,10 +80,9 @@ export const state: Observable<IDashboardState> = observableCombineLatest(
   selectedViewData.pipe(startWith<IViewData | null>(null))
 )
   .pipe(map(([views, selectedView, viewData]) => {
-    const s: IDashboardState = {
+    return {
       views: views,
       selectedView: selectedView,
       selectedViewData: viewData
     };
-    return s;
   }));
