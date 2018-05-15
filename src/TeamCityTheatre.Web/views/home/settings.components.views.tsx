@@ -96,6 +96,8 @@ const DefaultNumberOfBranchesPerTile = (props: { view: View }) => {
                   name="view-branches-per-tile-input"
                   className="form-control"
                   value={props.view.defaultNumberOfBranchesPerTile}
+                  step={1}
+                  min={1}
                   onClick={stopPropagation}
                   onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withDefaultNumberOfBranchesPerTile(+event.currentTarget.value))}
                   onKeyUp={onEnter(() => saveView(props.view))}/>;
@@ -105,6 +107,9 @@ const DefaultNumberOfBranchesPerTile = (props: { view: View }) => {
 const NumberOfColumns = (props: { view: View }) => {
   if (props.view.isEditing)
     return <input type="number"
+                  step={1}
+                  min={4}
+                  max={16}
                   name="view-number-of-columns"
                   className="form-control"
                   value={props.view.numberOfColumns}
