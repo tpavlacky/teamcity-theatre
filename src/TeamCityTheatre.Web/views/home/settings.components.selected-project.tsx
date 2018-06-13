@@ -35,8 +35,7 @@ export const SelectedProject = (props: { selectedProject: Project | null, select
 };
 
 const OpenInTeamCityButton = (props: { project: Project }) => (
-  <a className="btn btn-info btn-sm" target="_blank"
-     href={`http://vm64-teamcity-2012/project.html?projectId=${props.project.id}`}>
+  <a className="btn btn-info btn-sm" target="_blank" href={props.project.webUrl}>
     <i className="fa fa-globe"/> Open in TeamCity
   </a>
 );
