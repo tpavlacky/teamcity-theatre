@@ -28,6 +28,8 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 
 - A TeamCity server (d'uh). TeamCityTheatre is confirmed to be compatible with 2017.1.4 (build 47070). Other versions may or may not work, JetBrains likes to break its own APIs from time to time.
 - A Windows Server with IIS to host the web application, or your Windows dev machine if you just want to try it out.
+- .NET Core Runtime 2.x (downloadable from https://www.microsoft.com/net/download/all )
+- .NET Core Windows Hosting Bundle (downloadable from the same page you downloaded the runtime from )
 - Some knowledge on how to add a .NET web application in IIS, or the willingness to learn.
 - A nice cup of coffee to drink while you install this. 
 
@@ -35,9 +37,8 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 
 ### Windows IIS
 
-1. Ensure you have [.NET Core Windows Server Hosting Bundle](https://docs.microsoft.com/en-us/aspnet/core/publishing/iis) installed 
-2. Download and unzip the [the latest release](https://github.com/amoerie/teamcity-theatre/releases)
-3. Add the following to the `appsettings.json` file:
+1. Download and unzip the [the latest release](https://github.com/amoerie/teamcity-theatre/releases)
+2. Add the following to the `appsettings.json` file:
 
 ```
   "Connection": {
@@ -48,6 +49,7 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ```
 
 4. (Optional) Change the location of the configuration.json file or leave the default
+5. (Optional) Change the logging configuration. It's quite verbose by default, but will never take more than 75MB of space.
 5. Install this folder as a web application in IIS:
   - Application pool should use .NET CLR version 'No Managed Code'
   - Application pool should use Managed Pipeline mode 'Integrated'
@@ -57,7 +59,7 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 Open the web application from a browser
   - Make sure that you type the URL in lowercase
   - Open the settings page from the main menu. 
-    - If you see any errors, your server or credentials might be incorrect. Check in the log files why the network request failed.
+    - If you see any errors, your server or credentials might be incorrect. Check the log files why the network request failed.
   - Add a new view, give it a name.
   - Expand your TeamCity projects in the left bottom pane and select one to see its build configurations.
   - Add build configurations to your view. These will become the tiles of your view.
@@ -67,7 +69,7 @@ Open the web application from a browser
 
 ## Compilation instructions
 
-1. Ensure you have [.NET Core SDK](https://www.microsoft.com/net/download/core) installed
+1. Ensure you have [.NET Core SDK 2.x](https://www.microsoft.com/net/download/core) installed
 2. Ensure you have [Yarn](https://yarnpkg.com) installed
 3. Execute "publish.cmd" or "publish.sh" (.cmd for Windows)
 4. If all goes well, that should create a folder 'publish-output' which is all you need to host the application. See Installation instructions from here.
