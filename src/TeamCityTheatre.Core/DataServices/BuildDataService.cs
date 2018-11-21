@@ -6,6 +6,7 @@ using TeamCityTheatre.Core.Client;
 using TeamCityTheatre.Core.Client.Mappers;
 using TeamCityTheatre.Core.Client.Responses;
 using TeamCityTheatre.Core.Models;
+using TeamCityTheatre.Core.Options;
 
 namespace TeamCityTheatre.Core.DataServices {
   public interface IBuildDataService {
@@ -16,16 +17,16 @@ namespace TeamCityTheatre.Core.DataServices {
   public class BuildDataService : IBuildDataService {
     readonly ITeamCityClient _teamCityClient;
     readonly IBuildMapper _buildMapper;
+    readonly ApiOptions _apiOptions;
 
-    public BuildDataService(ITeamCityClient teamCityClient, IBuildMapper buildMapper) {
+    public BuildDataService(ITeamCityClient teamCityClient, IBuildMapper buildMapper, ApiOptions apiOptions) {
       _teamCityClient = teamCityClient ?? throw new ArgumentNullException(nameof(teamCityClient));
       _buildMapper = buildMapper ?? throw new ArgumentNullException(nameof(buildMapper));
+      _apiOptions = apiOptions ?? throw new ArgumentNullException(nameof(apiOptions));
     }
 
     public async Task<IEnumerable<IDetailedBuild>> GetBuildsOfBuildConfigurationAsync(string buildConfigurationId, int count = 100) {
-      var request = new RestRequest("builds/?locator=branch:(default:any,policy:active_history_and_active_vcs_branches),running:any,count:{count},buildType:(id:{buildConfigurationId})" +
-                                    "&fields=count,build(id,buildTypeId,number,status,state,percentageComplete,branchName,defaultBranch,href,webUrl," +
-                                    "running-info(percentageComplete,elapsedSeconds,estimatedTotalSeconds,currentStageText),queuedDate,startDate,finishDate)");
+      var request = new RestRequest(_apiOptions.GetBuildsOfBuildConfiguration);
       request.AddUrlSegment("count", Convert.ToString(count));
       request.AddUrlSegment("buildConfigurationId", buildConfigurationId);
       var response = await _teamCityClient.ExecuteRequestAsync<BuildsResponse>(request);

@@ -28,6 +28,7 @@ namespace TeamCityTheatre.Web {
     public static IServiceCollection AddTeamCityServices(this IServiceCollection services, IConfiguration configuration) {
       /* stuff necessary to call TeamCity REST API */
       services.Configure<ConnectionOptions>(configuration.GetSection("Connection"));
+      services.Configure<ApiOptions>(configuration.GetSection("Api"));
       services.AddSingleton<ITeamCityRestClientFactory, TeamCityRestClientFactory>();
       services.AddSingleton<IResponseValidator, ResponseValidator>();
       services.AddSingleton<ITeamCityRequestPreparer, TeamCityRequestPreparer>();
