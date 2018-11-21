@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 using RestSharp;
 using TeamCityTheatre.Core.Client;
 using TeamCityTheatre.Core.Client.Mappers;
@@ -19,10 +20,10 @@ namespace TeamCityTheatre.Core.DataServices {
     readonly IBuildMapper _buildMapper;
     readonly ApiOptions _apiOptions;
 
-    public BuildDataService(ITeamCityClient teamCityClient, IBuildMapper buildMapper, ApiOptions apiOptions) {
+    public BuildDataService(ITeamCityClient teamCityClient, IBuildMapper buildMapper, IOptions<ApiOptions> apiOptions) {
       _teamCityClient = teamCityClient ?? throw new ArgumentNullException(nameof(teamCityClient));
       _buildMapper = buildMapper ?? throw new ArgumentNullException(nameof(buildMapper));
-      _apiOptions = apiOptions ?? throw new ArgumentNullException(nameof(apiOptions));
+      _apiOptions = apiOptions?.Value ?? throw new ArgumentNullException(nameof(apiOptions));
     }
 
     public async Task<IEnumerable<IDetailedBuild>> GetBuildsOfBuildConfigurationAsync(string buildConfigurationId, int count = 100) {

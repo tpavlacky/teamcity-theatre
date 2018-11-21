@@ -13,7 +13,8 @@
       "launchBrowser": true,
       "launchUrl": "http://localhost/teamcitytheatre",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://*:5862"
       }
     }
   }

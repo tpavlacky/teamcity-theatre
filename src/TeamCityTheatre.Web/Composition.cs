@@ -10,9 +10,10 @@ using TeamCityTheatre.Core.Repositories;
 
 namespace TeamCityTheatre.Web {
   public static class Composition {
-
+    
     public static IServiceCollection AddViewManagement(this IServiceCollection services, IConfiguration configuration) {
       services.Configure<StorageOptions>(configuration.GetSection("Storage"));
+      services.Configure<ApiOptions>(configuration.GetSection("Api"));
 
       services.AddSingleton<IConfigurationRepository, ConfigurationRepository>();
 
@@ -28,7 +29,6 @@ namespace TeamCityTheatre.Web {
     public static IServiceCollection AddTeamCityServices(this IServiceCollection services, IConfiguration configuration) {
       /* stuff necessary to call TeamCity REST API */
       services.Configure<ConnectionOptions>(configuration.GetSection("Connection"));
-      services.Configure<ApiOptions>(configuration.GetSection("Api"));
       services.AddSingleton<ITeamCityRestClientFactory, TeamCityRestClientFactory>();
       services.AddSingleton<IResponseValidator, ResponseValidator>();
       services.AddSingleton<ITeamCityRequestPreparer, TeamCityRequestPreparer>();
@@ -61,8 +61,5 @@ namespace TeamCityTheatre.Web {
       
       return services;
     }
-
-
-
   }
 }
