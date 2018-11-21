@@ -10,10 +10,9 @@
 
   @media (min-width: 480px) {
     font-size: 24px;
-  }
-  @media (min-width: 768px) {
-    font-size: 56px;
-  }
+  } @media (min-width: 768px) {
+  font-size: 56px;
+}
 }
 
 .view {
@@ -200,6 +199,11 @@
             font-size: 15px;
             white-space: nowrap;
             overflow: visible;
+
+            .build-execution-time,
+            .build-age {
+              font-size: 0.75em;
+            }
           }
         }
       }

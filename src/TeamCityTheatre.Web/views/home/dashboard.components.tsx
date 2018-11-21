@@ -3,6 +3,7 @@ import { IView, IViewData, ITileData, BuildStatus, IDetailedBuild } from "../sha
 import * as parse from "date-fns/parse";
 import * as addSeconds from "date-fns/add_seconds";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
+import * as distanceInWordsStrict from "date-fns/distance_in_words_strict";
 
 /**
  * Root dispatching component
@@ -121,12 +122,15 @@ const FinishDate = (props: { build: IDetailedBuild }) => {
   const isSuccess = build.status === BuildStatus.Success;
   const theme = isSuccess ? "success" : "danger";
 
+  const startDate = parse(build.startDate);
   const finishDate = parse(build.finishDate);
   const differenceWithNow = distanceInWordsToNow(finishDate, { includeSeconds: true, addSuffix: true });
+  const differenceWithStartDate = distanceInWordsStrict(finishDate, startDate);
   return (
     <span className="execution-timestamp">
-      <span className={`build-number label label-${theme}`}>{build.number}</span>
-      {` finished ${differenceWithNow}`}
+      <span className={`build-number label label-${theme}`}><i className="fa fa-tag" /> {build.number}</span>
+      <span className="build-execution-time"> <i className="fa fa-clock-o" /> {differenceWithStartDate}</span>
+      <span className="build-age"> ({`${differenceWithNow}`})</span>
     </span>
   );
 };
