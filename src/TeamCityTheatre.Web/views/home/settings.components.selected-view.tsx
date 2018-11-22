@@ -42,7 +42,7 @@ const TileRow = SortableElement<{ view: View, tile: Tile }>((props: { view: View
     <li className="tile list-group-item"
         onDoubleClick={() => updateView(view.withTile(tile.withIsEditing(true)))}>
       <div className="tile-drag-handle">
-        <TileDragHandle />
+        <TileDragHandle key={""} />
       </div>
       <div className="tile-label">
         <TileLabel {...props} />

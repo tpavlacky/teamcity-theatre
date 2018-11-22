@@ -1,27 +1,28 @@
-﻿import { createElement, MouseEvent } from "react";
-import { IView, IViewData, ITileData, BuildStatus, IDetailedBuild } from "../shared/contracts";
+﻿import {createElement, FunctionComponent, MouseEvent} from "react";
+import {IView, IViewData, ITileData, BuildStatus, IDetailedBuild} from "../shared/contracts";
 import * as parse from "date-fns/parse";
 import * as addSeconds from "date-fns/add_seconds";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";
 import * as distanceInWordsStrict from "date-fns/distance_in_words_strict";
+import {IDashboardState} from "./dashboard.observables";
 
 /**
  * Root dispatching component
  */
-export const Dashboard =
-  (props: { views: IView[] | null, selectedView: IView | null, selectedViewData: IViewData | null }) => {
+export const Dashboard: FunctionComponent<IDashboardState> =
+  props => {
     if (props.views === null)
       return <div>
-               <i className="fa fa-spin fa-cog"/> Loading views
-             </div>;
+        <i className="fa fa-spin fa-cog"/> Loading views
+      </div>;
 
     if (props.selectedView === null)
       return <Views views={props.views}/>;
 
     if (props.selectedViewData === null)
       return <div>
-               <i className="fa fa-spin fa-cog"/> Loading view data
-             </div>;
+        <i className="fa fa-spin fa-cog"/> Loading view data
+      </div>;
 
     return <View view={props.selectedView} data={props.selectedViewData}/>;
   };
@@ -42,8 +43,6 @@ const tryRequestFullScreen = (event: MouseEvent<HTMLButtonElement>) => {
   const button = event.currentTarget as HTMLButtonElement;
   const view = button.parentNode as HTMLDivElement;
   if (view.requestFullscreen) view.requestFullscreen();
-  if (view.webkitRequestFullScreen) view.webkitRequestFullScreen();
-  if (view.webkitRequestFullscreen) view.webkitRequestFullscreen();
 };
 
 /**
@@ -56,7 +55,7 @@ const View = (props: { view: IView, data: IViewData }) => (
     </button>
     <div id="tiles">
       <div className="tiles-wrapper">
-        {props.data.tiles.map(tile => <Tile key={tile.id} view={props.view} data={tile}/>) }
+        {props.data.tiles.map(tile => <Tile key={tile.id} view={props.view} data={tile}/>)}
       </div>
     </div>
   </div>
@@ -74,7 +73,7 @@ const Tile = (props: { view: IView, data: ITileData }) => {
     <div id={props.data.id} className={`tile ${buildStatus} ${height} ${width}`}>
       <h4 className="tile-title">{props.data.label}</h4>
       <div className="tile-builds">
-        { props.data.builds.map(build => <Build key={build.id} build={build} />) }
+        {props.data.builds.map(build => <Build key={build.id} build={build}/>)}
       </div>
     </div>
   );
@@ -84,7 +83,7 @@ const Tile = (props: { view: IView, data: ITileData }) => {
  * A single build in a tile
  */
 const Build = (props: { build: IDetailedBuild }) => {
-  const { build } = props;
+  const {build} = props;
   const isFinished = build.state === "finished";
   const isRunning = build.state === "running";
   const isSuccess = build.status === BuildStatus.Success;
@@ -98,10 +97,11 @@ const Build = (props: { build: IDetailedBuild }) => {
     <div id={build.id} className={`tile-build ${buildStatus}`}>
       <div className="progress">
         <a href={build.webUrl} target="_blank">
-          <div className={`progress-bar ${progressBarTheme} ${progressBarAnimation}`} style={{ width: `${percentageCompleted}%` }}>
-            {<Branch build={build} />}
-            {isFinished ? <FinishDate build={build} /> : null}
-            {isRunning ? <TimeRemaining build={build} /> : null }
+          <div className={`progress-bar ${progressBarTheme} ${progressBarAnimation}`}
+               style={{width: `${percentageCompleted}%`}}>
+            {<Branch build={build}/>}
+            {isFinished ? <FinishDate build={build}/> : null}
+            {isRunning ? <TimeRemaining build={build}/> : null}
           </div>
         </a>
       </div>
@@ -118,30 +118,30 @@ const Branch = (props: { build: IDetailedBuild }) => {
 };
 
 const FinishDate = (props: { build: IDetailedBuild }) => {
-  const { build } = props;
+  const {build} = props;
   const isSuccess = build.status === BuildStatus.Success;
   const theme = isSuccess ? "success" : "danger";
 
   const startDate = parse(build.startDate);
   const finishDate = parse(build.finishDate);
-  const differenceWithNow = distanceInWordsToNow(finishDate, { includeSeconds: true, addSuffix: true });
+  const differenceWithNow = distanceInWordsToNow(finishDate, {includeSeconds: true, addSuffix: true});
   const differenceWithStartDate = distanceInWordsStrict(finishDate, startDate);
   return (
     <span className="execution-timestamp">
-      <span className={`build-number label label-${theme}`}><i className="fa fa-tag" /> {build.number}</span>
-      <span className="build-execution-time"> <i className="fa fa-clock-o" /> {differenceWithStartDate}</span>
+      <span className={`build-number label label-${theme}`}><i className="fa fa-tag"/> {build.number}</span>
+      <span className="build-execution-time"> <i className="fa fa-clock-o"/> {differenceWithStartDate}</span>
       <span className="build-age"> ({`${differenceWithNow}`})</span>
     </span>
   );
 };
 
 const TimeRemaining = (props: { build: IDetailedBuild }) => {
-  const { build } = props;
+  const {build} = props;
   const isSuccess = build.status === BuildStatus.Success;
   const theme = isSuccess ? "success" : "danger";
 
   const estimatedFinishDate = addSeconds(parse(props.build.startDate), props.build.estimatedTotalSeconds);
-  const differenceWithNow = distanceInWordsToNow(estimatedFinishDate, { includeSeconds: true, addSuffix: true });
+  const differenceWithNow = distanceInWordsToNow(estimatedFinishDate, {includeSeconds: true, addSuffix: true});
   return (
     <span className="remaining">
       <span className={`build-number label label-${theme}`}>{build.number}</span>
