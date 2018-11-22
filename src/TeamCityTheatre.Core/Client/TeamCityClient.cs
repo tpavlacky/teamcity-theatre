@@ -22,9 +22,9 @@ namespace TeamCityTheatre.Core.Client {
 
     public async Task<TResponse> ExecuteRequestAsync<TResponse>(IRestRequest request) where TResponse : new() {
       var parameters = string.Join(", ", request.Parameters.Select(p => $"{p.Name} = {p.Value}"));
-      _logger.Information("[REQUEST ] {Method} {Url} with parameters {Parameters}", request.Method, request.Resource, parameters);
+      _logger.Verbose("[REQUEST ] {Method} {Url} with parameters {Parameters}", request.Method, request.Resource, parameters);
       var response = await _inner.ExecuteRequestAsync<TResponse>(request);
-      _logger.Information("[RESPONSE] {@Data}", response);
+      _logger.Verbose("[RESPONSE] {@Data}", response);
       return response;
     }
   }
