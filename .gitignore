@@ -264,7 +264,6 @@ src/TeamCityTheatre.Web/views/**/*.js
 tools/
 
 ### Don't include build and publish artifacts from the build.cake scripts
-/build-output/
 /publish-output/
 
 /.dotnet

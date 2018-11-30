@@ -1,0 +1,18 @@
+﻿# exclude everything
+*
+
+# include only things we really want
+!src/TeamCityTheatre.Web/appsettings.json
+!src/TeamCityTheatre.Web/package.json
+!src/TeamCityTheatre.Web/package-lock.json
+!src/TeamCityTheatre.Web/webpack.config.js
+!src/TeamCityTheatre.Web/tsconfig.json
+!src/TeamCityTheatre.Web/web.config
+!src/TeamCityTheatre.Web/wwwroot/css/bootstrap.min.css
+!src/TeamCityTheatre.Web/wwwroot/css/font-awesome.min.css
+!src/TeamCityTheatre.Web/wwwroot/fonts/*
+!src/**/*.cs
+!src/**/*.cshtml
+!src/**/*.pcss
+!src/TeamCityTheatre.Web/Views/**/*.ts
+!src/TeamCityTheatre.Web/Views/**/*.tsx
