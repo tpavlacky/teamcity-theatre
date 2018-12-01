@@ -70,7 +70,7 @@ Open the web application from a browser
 ## Compilation instructions
 
 1. Ensure you have [.NET Core SDK 2.x](https://www.microsoft.com/net/download/core) installed
-2. Ensure you have [Yarn](https://yarnpkg.com) installed
+2. Ensure you have [Node](https://nodejs.org/en/) installed
 3. Execute "publish.cmd" or "publish.sh" (.cmd for Windows)
 4. If all goes well, that should create a folder 'publish-output' which is all you need to host the application. See Installation instructions from here.
 
