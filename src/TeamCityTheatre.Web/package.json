@@ -28,11 +28,11 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "clean": "rimraf views/**/*.js views/**/*.js.map",
+    "clean": "rimraf ./Views/**/*.js ./Views/**/*.js.map",
     "ts": "tsc --pretty",
     "js": "webpack --config=webpack.config.js --hide-modules --colors --mode=production",
     "js:debug": "webpack --config=webpack.config.js --colors --hide-modules --mode=development",
-    "pcss": "postcss views/**/*.pcss --use postcss-nested --dir wwwroot/css --ext=.css --no-map true",
+    "pcss": "postcss ./Views/**/*.pcss --use postcss-nested --dir wwwroot/css --ext=.css --no-map true",
     "watch:ts": "npm run ts -- --watch",
     "watch:js": "npm run js:debug -- --watch=true",
     "watch:pcss": "npm run pcss -- --watch=true",

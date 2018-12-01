@@ -1,9 +1,9 @@
 import { map, startWith, share, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from "rxjs";
 
-import { debug } from "../shared/operators/debug";
+import { debug } from "../Shared/operators/debug";
 
-import { View } from "../shared/models";
+import { View } from "../Shared/models";
 import { ajax } from "rxjs/ajax";
 
 const requestDeleteViewSubject = new Subject<View | null>();

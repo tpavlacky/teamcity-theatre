@@ -1,5 +1,5 @@
 import {createElement} from "react";
-import {BuildConfiguration, Project, Tile, View} from "../shared/models";
+import {BuildConfiguration, Project, Tile, View} from "../Shared/models";
 import {updateView} from "./settings.observables.views";
 import {saveView} from "./settings.observables.save-view";
 

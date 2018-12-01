@@ -1,5 +1,5 @@
 import {createElement, StatelessComponent} from "react";
-import {Project as ProjectModel} from "../shared/models";
+import {Project as ProjectModel} from "../Shared/models";
 import {selectProject} from "./settings.observables.selected-project";
 import {updateProject} from "./settings.observables.projects";
 

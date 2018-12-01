@@ -1,9 +1,9 @@
 import { defer as observableDefer, Observable, Subject, merge } from 'rxjs';
 import { map, scan, startWith, switchMap } from 'rxjs/operators';
-import { debug } from "../shared/operators/debug";
+import { debug } from "../Shared/operators/debug";
 
-import { IBasicProject } from "../shared/contracts";
-import { Project } from "../shared/models";
+import { IBasicProject } from "../Shared/contracts";
+import { Project } from "../Shared/models";
 import { selectedProjects } from "./settings.observables.selected-project";
 import { ajax } from 'rxjs/ajax';
 

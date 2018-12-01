@@ -25,8 +25,8 @@
     ]
   },
   "include": [
-    "./views/**/*.ts",
-    "./views/**/*.tsx"
+    "./Views/**/*.ts",
+    "./Views/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

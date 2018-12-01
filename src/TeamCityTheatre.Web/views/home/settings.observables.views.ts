@@ -2,12 +2,12 @@ import { ajax } from 'rxjs/ajax';
 import { map, scan, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject, merge } from "rxjs";
 
-import { debug } from "../shared/operators/debug";
+import { debug } from "../Shared/operators/debug";
 
-import { IView } from "../shared/contracts";
-import { View } from "../shared/models";
+import { IView } from "../Shared/contracts";
+import { View } from "../Shared/models";
 import { savedViews } from "./settings.observables.save-view";
-import { mergeById } from "../shared/arrays/mergeById";
+import { mergeById } from "../Shared/arrays/mergeById";
 import { deletedViews } from "./settings.observables.delete-view";
 
 const updatedViewsSubject = new Subject<View>();
