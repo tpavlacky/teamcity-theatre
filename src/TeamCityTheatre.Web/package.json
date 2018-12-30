@@ -10,7 +10,7 @@
     "date-fns": "^1.29.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-sortable-hoc": "^0.8.3",
+    "react-sortable-hoc": "^0.8.4",
     "rxjs": "^6.1.0",
     "tslib": "^1.9.3",
     "uuid": "^3.3.2"
@@ -18,13 +18,13 @@
   "devDependencies": {
     "@types/node": "^10.12.10",
     "@types/react": "^16.7.7",
-    "@types/react-dom": "^16.0.10",
+    "@types/react-dom": "^16.0.11",
     "@types/uuid": "^3.4.4",
     "postcss-cli": "^6.0.1",
     "postcss-nested": "^4.1.0",
     "rimraf": "^2.6.2",
     "typescript": "^3.1.6",
-    "webpack": "^4.26.0",
+    "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
