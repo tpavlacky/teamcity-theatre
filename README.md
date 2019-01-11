@@ -85,3 +85,9 @@ Open the web application from a browser
 3. Execute "publish.cmd" or "publish.sh" depending on your operating system.
 4. If all goes well, that should create a folder 'publish-output' which is all you need to host the application. See Installation instructions from here.
 
+## Contributors
+
+- [amoerie](https://github.com/amoerie)
+- [tauptk](https://github.com/tauptk)
+- [trolleyyy](https://github.com/trolleyyy)
+
