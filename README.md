@@ -68,9 +68,8 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Usage instructions
 
 Open the web application from a browser
-  - Make sure that you type the URL in lowercase
   - Open the settings page from the main menu. 
-    - If you see any errors, your server or credentials might be incorrect. Check the log files why the network request failed.
+    - If you see any errors, your server or credentials might be incorrect. Check the log files to see why the network request failed.
   - Add a new view, give it a name.
   - Expand your TeamCity projects in the left bottom pane and select one to see its build configurations.
   - Add build configurations to your view. These will become the tiles of your view.
