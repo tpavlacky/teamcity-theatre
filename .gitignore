@@ -264,11 +264,14 @@ src/TeamCityTheatre.Web/views/**/*.js
 tools/
 
 ### Don't include build and publish artifacts from the build.cake scripts
-/build-output/
 /publish-output/
 
 /.dotnet
 /src/.vs
-/src/TeamCityTheatre.Web/appsettings.secrets.json
 /src/TeamCityTheatre.Web/data
 /src/TeamCityTheatre.Web/logs
+
+### Docker related data
+docker/logs
+docker/data
+docker.env

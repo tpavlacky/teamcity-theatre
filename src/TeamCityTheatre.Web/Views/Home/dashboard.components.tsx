@@ -1,5 +1,5 @@
 ﻿import {createElement, FunctionComponent, MouseEvent} from "react";
-import {IView, IViewData, ITileData, BuildStatus, IDetailedBuild} from "../shared/contracts";
+import {IView, IViewData, ITileData, BuildStatus, IDetailedBuild} from "../Shared/contracts";
 import * as parse from "date-fns/parse";
 import * as addSeconds from "date-fns/add_seconds";
 import * as distanceInWordsToNow from "date-fns/distance_in_words_to_now";

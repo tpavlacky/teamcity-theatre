@@ -1,0 +1,15 @@
+﻿# already published artifacts from local scripts
+publish-output
+
+# IDE related files
+src/.idea
+src/.vs
+
+# everything under node_modules, that would be huge
+src/TeamCityTheatre.Web/node_modules
+src/TeamCityTheatre.Web/Views/**/*.js
+src/TeamCityTheatre.Web/Views/**/*.js.map
+
+# any generated .NET build artifacts in development
+**/bin/**/*
+**/obj/**/*

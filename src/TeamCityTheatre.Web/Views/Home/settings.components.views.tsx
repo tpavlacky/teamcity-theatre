@@ -1,10 +1,10 @@
 import {ChangeEvent, MouseEvent, createElement} from "react";
-import {View} from "../shared/models";
+import {View} from "../Shared/models";
 import {selectView} from "./settings.observables.selected-view";
 import {updateView} from "./settings.observables.views";
 import {saveView} from "./settings.observables.save-view";
-import {onEnter} from "../shared/events/onEnter";
-import {stopPropagation} from "../shared/events/stopPropagation";
+import {onEnter} from "../Shared/events/onEnter";
+import {stopPropagation} from "../Shared/events/stopPropagation";
 import {confirmDeleteView, requestDeleteView} from "./settings.observables.delete-view";
 
 export const Views = (props: { views: View[] | null, selectedView: View | null, deleteViewRequest: View | null }) => {

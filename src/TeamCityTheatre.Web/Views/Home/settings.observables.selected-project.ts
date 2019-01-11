@@ -1,9 +1,9 @@
 import { map, share, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from "rxjs";
 
-import { debug } from "../shared/operators/debug";
-import { IDetailedProject } from "../shared/contracts";
-import { BuildConfiguration, Project } from "../shared/models";
+import { debug } from "../Shared/operators/debug";
+import { IDetailedProject } from "../Shared/contracts";
+import { BuildConfiguration, Project } from "../Shared/models";
 import { ajax } from "rxjs/ajax";
 
 const selectedProjectsSubject = new Subject<Project>();

@@ -1,10 +1,10 @@
 import {ChangeEvent, createElement} from "react";
 import {SortableContainer, SortableElement, SortableHandle, SortEnd} from "react-sortable-hoc";
-import {Tile, View} from "../shared/models";
+import {Tile, View} from "../Shared/models";
 import {updateView} from "./settings.observables.views";
 import {saveView} from "./settings.observables.save-view";
-import {stopPropagation} from "../shared/events/stopPropagation";
-import {onEnter} from "../shared/events/onEnter";
+import {stopPropagation} from "../Shared/events/stopPropagation";
+import {onEnter} from "../Shared/events/onEnter";
 
 export const handleOnSortEnd = (view: View) => (sort: SortEnd) => saveView(updateView(view.moveTile(sort.oldIndex, sort.newIndex)));
 

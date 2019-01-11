@@ -1,9 +1,9 @@
 import { scan, startWith, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from "rxjs";
 
-import { debug } from "../shared/operators/debug";
+import { debug } from "../Shared/operators/debug";
 
-import { View } from "../shared/models";
+import { View } from "../Shared/models";
 import { updatedViews } from "./settings.observables.views";
 
 const selectedViewsSubject = new Subject<View>();

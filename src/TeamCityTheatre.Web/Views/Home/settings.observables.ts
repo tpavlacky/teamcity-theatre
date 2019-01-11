@@ -1,7 +1,7 @@
 import { combineLatest as observableCombineLatest, Observable } from 'rxjs';
-import { debug } from "../shared/operators/debug";
+import { debug } from "../Shared/operators/debug";
 
-import { Project, View } from "../shared/models";
+import { Project, View } from "../Shared/models";
 
 import { views } from "./settings.observables.views";
 import { deleteViewRequests } from "./settings.observables.delete-view";

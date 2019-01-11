@@ -9,8 +9,8 @@ import {
 
 import { catchError, delay, filter, isEmpty, map, mergeMap, repeat, startWith, switchMap, take } from 'rxjs/operators';
 import { ajax } from "rxjs/ajax";
-import { IView, IViewData } from "../shared/contracts";
-import { routes } from "../shared/observables/routes";
+import { IView, IViewData } from "../Shared/contracts";
+import { routes } from "../Shared/observables/routes";
 
 // fetching the initial set of views
 export const allViews: Observable<IView[] | null> = observableDefer(() => ajax.getJSON<IView[]>("api/views"));
