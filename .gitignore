@@ -253,6 +253,7 @@ workspace.xml
 
 ### Don't include generated CSS in source control
 src/TeamCityTheatre.Web/wwwroot/css
+### But do include these
 !src/TeamCityTheatre.Web/wwwroot/css/bootstrap.min.css
 !src/TeamCityTheatre.Web/wwwroot/css/font-awesome.min.css
 
