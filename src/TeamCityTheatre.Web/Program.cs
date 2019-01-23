@@ -67,19 +67,18 @@ namespace TeamCityTheatre.Web {
         throw new Exception("Connection.Url is not present");
       }
 
-      if (string.IsNullOrEmpty(teamCityConnection.Username)) {
-        throw new Exception("Connection.Username is not present");
+      if (teamCityConnection.AuthenticationMode == AuthenticationMode.BasicAuthentication && string.IsNullOrEmpty(teamCityConnection.Username)) {
+        throw new Exception("Connection.Username is not present and authenticationMode is set to BasicAuthentication");
       }
 
-      if (string.IsNullOrEmpty(teamCityConnection.Password)) {
-        throw new Exception("Connection.Password is not present");
+      if (teamCityConnection.AuthenticationMode == AuthenticationMode.BasicAuthentication && string.IsNullOrEmpty(teamCityConnection.Password)) {
+        throw new Exception("Connection.Password is not present  and authenticationMode is set to BasicAuthentication");
       }
 
-      logger.Information("Using TeamCity server   : "
-                         + teamCityConnection.Url);
-      logger.Information("Using TeamCity user     : "
-                         + teamCityConnection.Username);
-      logger.Information("Using TeamCity password : "
+      logger.Information("Using TeamCity server    : " + teamCityConnection.Url);
+      logger.Information("Using TeamCity auth mode : " + teamCityConnection.AuthenticationMode);
+      logger.Information("Using TeamCity user      : " + teamCityConnection.Username);
+      logger.Information("Using TeamCity password  : "
                          + teamCityConnection.Password[0]
                          + new string(teamCityConnection.Password.Skip(1).Select(_ => '*').ToArray()));
     }

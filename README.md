@@ -42,15 +42,17 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 2. Configure your TeamCity settings, the application needs a URL, username and password. You can choose between two options:
   - Either add the following to the `appsettings.json` file:
 
-```
+```javascript
   "Connection": {
     "Url": "http://your-teamcity-server/",
+    "AuthenticationMode": "BasicAuthentication" // or "Guest"
     "Username": "your-teamcity-username",
     "Password": "your-teamcity-password"
   }
 ```
   - OR add the following environment parameters: (watch the number of underscores!!!)
     - TEAMCITYTHEATRE_CONNECTION__URL
+    - TEAMCITYTHEATRE_CONNECTION__AUTHENTICATIONMODE
     - TEAMCITYTHEATRE_CONNECTION__USERNAME
     - TEAMCITYTHEATRE_CONNECTION__PASSWORD
 

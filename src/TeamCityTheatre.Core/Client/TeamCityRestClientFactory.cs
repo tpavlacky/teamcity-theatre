@@ -14,10 +14,30 @@ namespace TeamCityTheatre.Core.Client {
   public class TeamCityRestClientFactory : ITeamCityRestClientFactory {
     public IRestClient Create(ConnectionOptions connectionOptions) {
       if (connectionOptions == null) throw new ArgumentNullException(nameof(connectionOptions));
-      var client = new RestClient {
-        BaseUrl = new Uri(new Uri(connectionOptions.Url), new Uri("httpAuth/app/rest", UriKind.Relative)),
-        Authenticator = new HttpBasicAuthenticator(connectionOptions.Username, connectionOptions.Password),
-      }.UseSerializer(new JsonNetSerializer());
+
+      RestClient client = null;
+
+      switch (connectionOptions.AuthenticationMode) {
+        case AuthenticationMode.BasicAuthentication: {
+          client = new RestClient {
+            BaseUrl = new Uri(new Uri(connectionOptions.Url), new Uri("httpAuth/app/rest", UriKind.Relative)),
+            Authenticator = new HttpBasicAuthenticator(connectionOptions.Username, connectionOptions.Password),
+          };
+          break;
+        }
+
+        case AuthenticationMode.Guest: {
+          client = new RestClient {
+            BaseUrl = new Uri(new Uri(connectionOptions.Url), new Uri("guestAuth/app/rest", UriKind.Relative))
+          };
+          break;
+        }
+        
+        default:
+          throw new ArgumentOutOfRangeException("Invalid connectionOptions.AuthenticationMode: " + connectionOptions.AuthenticationMode);
+      }
+      
+      client.UseSerializer(new JsonNetSerializer());
 
       client.DefaultParameters.Add(new Parameter {Type = ParameterType.HttpHeader, Name = "Accept", Value = "application/json"});
       
