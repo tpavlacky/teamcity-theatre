@@ -30,10 +30,13 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Requirements
 
 - A TeamCity server (d'uh). TeamCityTheatre is confirmed to be compatible with 2017.1.4 (build 47070). Other versions may or may not work.
-- A Windows Server with IIS to host the web application, or Docker, or your Windows dev machine if you just want to try it out.
 - .NET Core Runtime 2.2 (downloadable from https://www.microsoft.com/net/download/all )
-- .NET Core Windows Hosting Bundle (only when hosting in IIS, downloadable from the same page you downloaded the runtime from )
-- Some knowledge on how to add a .NET web application in IIS, or the willingness to learn. (only when hosting in IIS)
+- If you want to use IIS:
+  - A Windows Server with IIS to host the web application
+  - .NET Core Windows Hosting Bundle, downloadable from the same page you downloaded the runtime from
+  - Some knowledge on how to add a .NET web application in IIS, or the willingness to learn.
+- If you  want to use Docker:
+  - Docker for Windows using Windows Containers. Linux and Linux containers might work but that's still in testing phase.
 - A nice cup of :coffee: to drink while you install this. 
 
 ## Installation instructions
@@ -70,9 +73,8 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Usage instructions
 
 Open the web application from a browser
-  - Make sure that you type the URL in lowercase
   - Open the settings page from the main menu. 
-    - If you see any errors, your server or credentials might be incorrect. Check the log files why the network request failed.
+    - If you see any errors, your server or credentials might be incorrect. Check the log files to see why the network request failed.
   - Add a new view, give it a name.
   - Expand your TeamCity projects in the left bottom pane and select one to see its build configurations.
   - Add build configurations to your view. These will become the tiles of your view.

@@ -1,10 +1,6 @@
-language: csharp
-mono: none
-dotnet: 2.2
-dist: xenial
+language: generic
 
-before_install:
-  - chmod +x ./publish.sh
+services: docker
 
 script:
-  - ./publish.sh
+  - docker build .
