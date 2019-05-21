@@ -42,7 +42,7 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Installation instructions
 
 1. Download and unzip the [the latest release](https://github.com/amoerie/teamcity-theatre/releases)
-2. Configure your TeamCity settings, the application needs a URL, username and password. You can choose between two options:
+2. Configure your TeamCity settings, the application needs a URL, username and password. If your TeamCity is configured with guest access, can use 'Guest' as the authentication mode, username and password are ignored then. To configure all this, you can choose between two options:
   - Either add the following to the `appsettings.json` file:
 
 ```javascript
@@ -94,4 +94,4 @@ Open the web application from a browser
 - [amoerie](https://github.com/amoerie)
 - [tauptk](https://github.com/tauptk)
 - [trolleyyy](https://github.com/trolleyyy)
-
+- [LazyTarget](https://github.com/LazyTarget)
