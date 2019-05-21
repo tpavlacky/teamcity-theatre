@@ -79,8 +79,8 @@ namespace TeamCityTheatre.Web {
       logger.Information("Using TeamCity auth mode : " + teamCityConnection.AuthenticationMode);
       logger.Information("Using TeamCity user      : " + teamCityConnection.Username);
       logger.Information("Using TeamCity password  : "
-                         + teamCityConnection.Password[0]
-                         + new string(teamCityConnection.Password.Skip(1).Select(_ => '*').ToArray()));
+                         + teamCityConnection.Password?.FirstOrDefault()
+                         + new string(teamCityConnection.Password?.Skip(1).Select(_ => '*').ToArray() ?? new char[0]));
     }
   }
 }
