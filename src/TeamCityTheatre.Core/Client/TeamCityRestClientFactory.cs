@@ -36,8 +36,8 @@ namespace TeamCityTheatre.Core.Client {
         default:
           throw new ArgumentOutOfRangeException("Invalid connectionOptions.AuthenticationMode: " + connectionOptions.AuthenticationMode);
       }
-      
-      client.UseSerializer(new JsonNetSerializer());
+      var jsonNetSerializer = new JsonNetSerializer();
+      client.UseSerializer(() => jsonNetSerializer);
 
       client.DefaultParameters.Add(new Parameter {Type = ParameterType.HttpHeader, Name = "Accept", Value = "application/json"});
       
