@@ -22,7 +22,7 @@ export const updatedViews: Observable<View> = merge(updatedViewsSubject, savedVi
 
 const initialViews: Observable<View[]> = deletedViews
   .pipe(startWith<View | null>(null))
-  .pipe(switchMap<View | null, IView[]>(() => ajax.getJSON<IView[]>("api/views")))
+  .pipe(switchMap<View | null, Observable<IView[]>>(() => ajax.getJSON<IView[]>("api/views")))
   .pipe(map((vs: IView[]) => vs.map(v => View.fromContract(v))))
   .pipe(startWith<View[]>([]))
   .pipe(debug("Initial views"))
