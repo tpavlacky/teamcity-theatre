@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace TeamCityTheatre.Web {
   public class Startup {
+    
+    public static readonly string Version = typeof(Startup).Assembly.GetName().Version.ToString();
+
     public Startup(IConfiguration configuration) {
       Configuration = configuration;
     }
