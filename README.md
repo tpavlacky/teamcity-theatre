@@ -1,6 +1,6 @@
 # :tv: TeamCity Theatre 
 
-[![Build Status](https://travis-ci.org/amoerie/teamcity-theatre.svg?branch=master)](https://travis-ci.org/amoerie/teamcity-theatre)
+[![Build Status Travis CI](https://travis-ci.org/amoerie/teamcity-theatre.svg?branch=master)](https://travis-ci.org/amoerie/teamcity-theatre) [![Build Status Azure Devops](https://amoerman.visualstudio.com/TeamCity%20Theatre/_apis/build/status/amoerie.teamcity-theatre?branchName=master)](https://amoerman.visualstudio.com/TeamCity%20Theatre/_build/latest?definitionId=4&branchName=master)
 
 A .NET MVC web application to monitor your TeamCity builds. 
 Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in all their red and green glory.
