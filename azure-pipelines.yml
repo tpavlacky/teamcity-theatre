@@ -15,6 +15,17 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'src/TeamCityTheatre.Web'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: 'src/TeamCityTheatre.Web'
+    customCommand: 'build:release'
+
 - task: NuGetToolInstaller@0
 
 - task: NuGetCommand@2
