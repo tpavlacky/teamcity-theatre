@@ -24,7 +24,7 @@ steps:
   inputs:
     command: 'custom'
     workingDir: 'src/TeamCityTheatre.Web'
-    customCommand: 'build:release'
+    customCommand: 'run build:release'
 
 - task: NuGetToolInstaller@0
 
