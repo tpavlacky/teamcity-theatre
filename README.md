@@ -97,3 +97,4 @@ Open the web application from a browser
 - [tauptk](https://github.com/tauptk)
 - [trolleyyy](https://github.com/trolleyyy)
 - [LazyTarget](https://github.com/LazyTarget)
+- [jimmycav](https://github.com/jimmycav)
