@@ -42,7 +42,11 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Installation instructions
 
 1. Download and unzip the [the latest release](https://github.com/amoerie/teamcity-theatre/releases)
-2. Configure your TeamCity settings, the application needs a URL, username and password. If your TeamCity is configured with guest access, can use 'Guest' as the authentication mode, username and password are ignored then. To configure all this, you can choose between two options:
+2. Configure your TeamCity settings, the application needs to somehow get access to the TeamCity API. The following authentication modes are supported:
+  - "Guest" mode: If your TeamCity is configured with guest access, you can use 'Guest' as the authentication mode. You don't need any credentials.
+  - "BasicAuthentication" mode: Every HTTP call will have a basic authentication header with a username and password. 
+  - "AccessToken": Every HTTP call will have an access token in the header
+3. To configure authentication:
   - Either add the following to the `appsettings.json` file:
 
 ```javascript
