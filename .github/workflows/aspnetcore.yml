@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
-        dotnet-version: [2.1.4]
+        dotnet-version: [2.2.x]
     
     steps:
     - name: Git checkout
