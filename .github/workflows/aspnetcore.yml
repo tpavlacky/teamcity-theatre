@@ -19,7 +19,7 @@ jobs:
       working-directory: "./src/TeamCityTheatre.Web"
       
     - name: NPM build
-      run: npm run build
+      run: npm run build:release
       working-directory: "./src/TeamCityTheatre.Web"
       
     - name: Build with dotnet
