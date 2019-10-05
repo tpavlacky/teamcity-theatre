@@ -15,7 +15,11 @@ jobs:
         dotnet-version: 2.2.108
       
     - name: NPM install
-      run: npm install
+      run: npm ci
+      working-directory: "./src/TeamCityTheatre.Web"
+      
+    - name: NPM build
+      run: npm run build
       working-directory: "./src/TeamCityTheatre.Web"
       
     - name: Build with dotnet
