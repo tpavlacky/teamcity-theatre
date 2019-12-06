@@ -1,6 +1,6 @@
 # :tv: TeamCity Theatre 
 
-[![Build Status](https://travis-ci.org/amoerie/teamcity-theatre.svg?branch=master)](https://travis-ci.org/amoerie/teamcity-theatre)
+[![Build Status Travis CI](https://travis-ci.org/amoerie/teamcity-theatre.svg?branch=master)](https://travis-ci.org/amoerie/teamcity-theatre) [![Build Status Azure Devops](https://amoerman.visualstudio.com/TeamCity%20Theatre/_apis/build/status/amoerie.teamcity-theatre?branchName=master)](https://amoerman.visualstudio.com/TeamCity%20Theatre/_build/latest?definitionId=4&branchName=master)
 
 A .NET MVC web application to monitor your TeamCity builds. 
 Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in all their red and green glory.
@@ -42,15 +42,20 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
 ## Installation instructions
 
 1. Download and unzip the [the latest release](https://github.com/amoerie/teamcity-theatre/releases)
-2. Configure your TeamCity settings, the application needs a URL, username and password. If your TeamCity is configured with guest access, can use 'Guest' as the authentication mode, username and password are ignored then. To configure all this, you can choose between two options:
+2. Configure your TeamCity settings, the application needs to somehow get access to the TeamCity API. The following authentication modes are supported:
+  - "Guest" mode: If your TeamCity is configured with guest access, you can use 'Guest' as the authentication mode. You don't need any credentials.
+  - "BasicAuthentication" mode: Every HTTP call will have a basic authentication header with a username and password. 
+  - "AccessToken": Every HTTP call will have an access token in the header
+3. To configure authentication:
   - Either add the following to the `appsettings.json` file:
 
 ```javascript
   "Connection": {
     "Url": "http://your-teamcity-server/",
-    "AuthenticationMode": "BasicAuthentication" // or "Guest"
-    "Username": "your-teamcity-username",
-    "Password": "your-teamcity-password"
+    "AuthenticationMode": "BasicAuthentication" // or "Guest" or "AccessToken"
+    "Username": "your-teamcity-username", // if using Basic
+    "Password": "your-teamcity-password", // if using Basic
+    "AccessToken": "your-teamcity-accesstoken", // if using AccessToken
   }
 ```
   - OR add the following environment parameters: (watch the number of underscores!!!)
@@ -58,6 +63,7 @@ Stick a TV on the wall, open a browser there and enjoy your TeamCity projects in
     - TEAMCITYTHEATRE_CONNECTION__AUTHENTICATIONMODE
     - TEAMCITYTHEATRE_CONNECTION__USERNAME
     - TEAMCITYTHEATRE_CONNECTION__PASSWORD
+    - TEAMCITYTHEATRE_CONNECTION__ACCESSTOKEN
 
 3. (Optional) In appsettings.json, change the location of the configuration.json file or leave the default. This file will contain your views/tiles/etc.
 4. (Optional) In appsettings.json, change the logging configuration. It's quite verbose by default, but will never take more than 75MB of space.
@@ -95,3 +101,4 @@ Open the web application from a browser
 - [tauptk](https://github.com/tauptk)
 - [trolleyyy](https://github.com/trolleyyy)
 - [LazyTarget](https://github.com/LazyTarget)
+- [jimmycav](https://github.com/jimmycav)
