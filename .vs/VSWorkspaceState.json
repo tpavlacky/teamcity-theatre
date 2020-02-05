@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\TeamCityTheatre.Core",
+    "\\src\\TeamCityTheatre.Core\\ApplicationModels",
+    "\\src\\TeamCityTheatre.Core\\Client",
+    "\\src\\TeamCityTheatre.Core\\Client\\Mappers",
+    "\\src\\TeamCityTheatre.Core\\Client\\Responses",
+    "\\src\\TeamCityTheatre.Core\\DataServices"
+  ],
+  "SelectedNode": "\\src\\TeamCityTheatre.Core\\Client\\TeamCityClient.cs",
+  "PreviewInSolutionExplorer": false
+}

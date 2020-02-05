@@ -41,6 +41,7 @@ const ViewsTable = (props: { views: View[], selectedView: View | null, deleteVie
       <thead>
       <tr>
         <th>Name</th>
+        <th>Branch name</th>
         <th># Branches per tile</th>
         <th># Columns</th>
         <th/>
@@ -64,6 +65,9 @@ const ViewRow = (props: { view: View, selectedView: View | null, deleteViewReque
       <td className="view-name">
         <ViewName view={props.view}/>
       </td>
+        <td className="branch-name">
+            <BranchName view={props.view} />
+        </td>
       <td className="view-branches-per-tile">
         <DefaultNumberOfBranchesPerTile view={props.view}/>
       </td>
@@ -88,6 +92,19 @@ const ViewName = (props: { view: View }) => {
                   onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withName(event.currentTarget.value))}
                   onKeyUp={onEnter(() => saveView(props.view))}/>;
   return <span>{props.view.name}</span>;
+};
+
+const BranchName = (props: { view: View }) => {
+    if (props.view.isEditing)
+        return <input type="text"
+            name="view-branch-name-input"
+            className="form-control"
+            value={props.view.branchName}
+            ref={(el: HTMLInputElement) => el && el.focus()}
+            onClick={stopPropagation}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => updateView(props.view.withBranchName(event.currentTarget.value))}
+            onKeyUp={onEnter(() => saveView(props.view))} />;
+    return <span>{props.view.branchName}</span>;
 };
 
 const DefaultNumberOfBranchesPerTile = (props: { view: View }) => {

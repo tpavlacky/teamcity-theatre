@@ -5,7 +5,8 @@ export interface IView {
   name: string;
   defaultNumberOfBranchesPerTile: number;
   numberOfColumns: number;
-  tiles: ITile[];
+    tiles: ITile[];
+    branchName: string
 }
 
 export interface ITile {

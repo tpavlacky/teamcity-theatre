@@ -19,9 +19,9 @@ namespace TeamCityTheatre.Core.QueryServices {
 
     public async Task<TileData> GetLatestTileDataAsync(View view, Tile tile) {
       var rawBuilds = await _buildDataService.GetBuildsOfBuildConfigurationAsync(tile.BuildConfigurationId, 20);
-      var buildsOrderByStartDate = rawBuilds.OrderByDescending(b => b.StartDate).ToList();
-      var defaultBranchBuild = buildsOrderByStartDate.FirstOrDefault(b => b.IsDefaultBranch);
-      var nonDefaultBranchBuilds = buildsOrderByStartDate.Where(b => !b.IsDefaultBranch)
+      var buildsOrderByName = rawBuilds.OrderByDescending(b => b.BranchName).ToList();
+      var defaultBranchBuild = buildsOrderByName.FirstOrDefault(b => b.IsDefaultBranch);
+      var nonDefaultBranchBuilds = buildsOrderByName.Where(b => !b.IsDefaultBranch)
         .GroupBy(b => b.BranchName)
         .Select(buildsPerBranch => buildsPerBranch.OrderByDescending(b => b.StartDate).First())
         .Take(defaultBranchBuild != null
