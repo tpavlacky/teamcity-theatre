@@ -32,7 +32,7 @@ namespace TeamCityTheatre.Core.QueryServices {
 			}
     }
 
-		private static TileData CreateDefaultTileData(View view, Tile tile, System.Collections.Generic.IEnumerable<Core.Models.IDetailedBuild> rawBuilds)
+		private static TileData CreateDefaultTileData(View view, Tile tile, IEnumerable<IDetailedBuild> rawBuilds)
 		{
 			var buildsOrderByStartDate = rawBuilds.OrderByDescending(b => b.StartDate).ToList();
 			var defaultBranchBuild = buildsOrderByStartDate.FirstOrDefault(b => b.IsDefaultBranch);
@@ -56,23 +56,17 @@ namespace TeamCityTheatre.Core.QueryServices {
 		private static TileData CreateTileDataByBranchFilter(View view, Tile tile, IEnumerable<IDetailedBuild> rawBuilds)
 		{
 			var buildsOrderByStartDate = rawBuilds.OrderByDescending(b => b.StartDate).ToList();
-			var defaultBranchBuild = buildsOrderByStartDate.FirstOrDefault(b => b.IsDefaultBranch);
-			var nonDefaultBranchBuilds = buildsOrderByStartDate.Where(b => !b.IsDefaultBranch)
+			var filteredBuilds = buildsOrderByStartDate.Where(b => !b.IsDefaultBranch)
 				.GroupBy(b => b.BranchName)
 				.Where((grp) => BranchBuildsPredicate(grp, view))
 				.Select(buildsPerBranch => buildsPerBranch.OrderByDescending(b => b.StartDate).First())
 				.OrderBy(build => build.BranchName)
-				.Take(defaultBranchBuild != null
-					? view.DefaultNumberOfBranchesPerTile - 1
-					: view.DefaultNumberOfBranchesPerTile);
-			var builds = defaultBranchBuild != null
-				? new[] { defaultBranchBuild }.Concat(nonDefaultBranchBuilds)
-				: nonDefaultBranchBuilds;
+				.Take(view.DefaultNumberOfBranchesPerTile);
 			return new TileData
 			{
 				Id = tile.Id,
 				Label = tile.Label,
-				Builds = builds.ToList()
+				Builds = filteredBuilds.ToList()
 			};
 		}
 
