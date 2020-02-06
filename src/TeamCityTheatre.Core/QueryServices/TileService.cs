@@ -56,7 +56,7 @@ namespace TeamCityTheatre.Core.QueryServices {
 		private static TileData CreateTileDataByBranchFilter(View view, Tile tile, IEnumerable<IDetailedBuild> rawBuilds)
 		{
 			var buildsOrderByStartDate = rawBuilds.OrderByDescending(b => b.StartDate).ToList();
-			var filteredBuilds = buildsOrderByStartDate.Where(b => !b.IsDefaultBranch)
+			var filteredBuilds = buildsOrderByStartDate
 				.GroupBy(b => b.BranchName)
 				.Where((grp) => BranchBuildsPredicate(grp, view))
 				.Select(buildsPerBranch => buildsPerBranch.OrderByDescending(b => b.StartDate).First())
