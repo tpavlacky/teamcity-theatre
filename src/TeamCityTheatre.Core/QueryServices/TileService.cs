@@ -90,7 +90,7 @@ namespace TeamCityTheatre.Core.QueryServices {
 				return false;
 			}
 
-			return Regex.IsMatch(build.BranchName, branchFilter);
+			return Regex.IsMatch(build.BranchName, branchFilter, RegexOptions.IgnoreCase);
 		}
 	}
 }
