@@ -60,7 +60,8 @@ namespace TeamCityTheatre.Core.QueryServices {
 				.GroupBy(b => b.BranchName)
 				.Where((grp) => BranchBuildsPredicate(grp, view))
 				.Select(buildsPerBranch => buildsPerBranch.OrderByDescending(b => b.StartDate).First())
-				.OrderBy(build => build.BranchName)
+				.OrderBy(build => !build.IsDefaultBranch)
+				.ThenBy(build => build.BranchName)
 				.Take(view.DefaultNumberOfBranchesPerTile);
 			return new TileData
 			{
