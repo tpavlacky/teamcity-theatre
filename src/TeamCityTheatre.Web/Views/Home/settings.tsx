@@ -1,5 +1,5 @@
 ﻿import {createElement} from "react";
-import {render} from "react-dom";
+import { render } from "react-dom";
 
 import {Settings} from "./settings.components";
 import {ErrorAlert} from "./erroralert.components";
