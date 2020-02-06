@@ -6,6 +6,7 @@ export interface IView {
   defaultNumberOfBranchesPerTile: number;
   numberOfColumns: number;
   tiles: ITile[];
+  branchFilter: string;
 }
 
 export interface ITile {
