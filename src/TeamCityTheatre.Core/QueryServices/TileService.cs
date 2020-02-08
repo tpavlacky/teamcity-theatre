@@ -58,7 +58,7 @@ namespace TeamCityTheatre.Core.QueryServices {
 			var buildsOrderByStartDate = rawBuilds.OrderByDescending(b => b.StartDate).ToList();
 			var filteredBuilds = buildsOrderByStartDate
 				.GroupBy(b => b.BranchName)
-				.Where((grp) => BranchBuildsPredicate(grp, view))
+				.Where((grp) => BranchFilterPredicate(grp, view.BranchFilter))
 				.Select(buildsPerBranch => buildsPerBranch.OrderByDescending(b => b.StartDate).First())
 				.OrderBy(build => !build.IsDefaultBranch)
 				.ThenBy(build => build.BranchName)
@@ -69,18 +69,6 @@ namespace TeamCityTheatre.Core.QueryServices {
 				Label = tile.Label,
 				Builds = filteredBuilds.ToList()
 			};
-		}
-
-		private static bool BranchBuildsPredicate(IGrouping<string, IDetailedBuild> arg, View view)
-		{
-			if (string.IsNullOrEmpty(view.BranchFilter))
-			{
-				return true;
-			}
-			else
-			{
-				return BranchFilterPredicate(arg, view.BranchFilter);
-			}
 		}
 
 		private static bool BranchFilterPredicate(IGrouping<string, IDetailedBuild> grouping, string branchFilter)
