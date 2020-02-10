@@ -37,25 +37,29 @@ const Views = (props: { views: IView[] }) => (
 );
 
 const tryRequestFullScreen = (event: MouseEvent<HTMLButtonElement>) => {
-    const button = event.currentTarget as HTMLButtonElement;
-    const view = button.parentNode as HTMLDivElement;
-    if (view.requestFullscreen) view.requestFullscreen();
-};
-
+  const button = event.currentTarget as HTMLButtonElement;
+  const view = (button.parentElement as HTMLDivElement).getElementsByClassName("view").item(0);
+  if (view != null && view.requestFullscreen) {
+    view.requestFullscreen();
+  };
+}
 /**
  * Details of a single view
  */
 const View = (props: { view: IView, data: IViewData }) => (
-    <div className="view" id={ props.view.id }>
-        <button role="button" className="btn btn-primary btn-xs" onClick={ tryRequestFullScreen }>
-            <i className="fa fa-expand"/> Full screen
-        </button>
-        <div id="tiles">
-            <div className="tiles-wrapper">
-                { props.data.tiles.map(tile => <Tile key={ tile.id } view={ props.view } data={ tile }/>) }
-            </div>
+  <div>
+    <button role="button" className="btn btn-primary btn-xs" onClick={tryRequestFullScreen}>
+      <i className="fa fa-expand" /> Full screen
+    </button>
+
+    <div className="view" id={props.view.id}>
+      <div id="tiles">
+        <div className="tiles-wrapper">
+          {props.data.tiles.map(tile => <Tile key={tile.id} view={props.view} data={tile} />)}
         </div>
+      </div>
     </div>
+  </div>
 );
 
 /**
